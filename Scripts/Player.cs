@@ -22,14 +22,20 @@ public partial class Player : RigidBody3D
 	/// </summary>
 	[Export] public float Deceleration { get; set; } = 30.0f;
 
+	/// <summary>
+	/// How quickly the player rotates toward the movement direction (radians per second).
+	/// </summary>
+	[Export] public float RotationSpeed { get; set; } = 10.0f;
+
 	public override void _PhysicsProcess(double delta)
 	{
-		HandleMovement((float)delta);
+		Vector3 inputDir = GetInputDirection();
+		HandleMovement(inputDir, (float)delta);
+		HandleRotation(inputDir, (float)delta);
 	}
 
-	private void HandleMovement(float delta)
+	private void HandleMovement(Vector3 inputDir, float delta)
 	{
-		Vector3 inputDir = GetInputDirection();
 		Vector3 targetVelocity = inputDir * MoveSpeed;
 
 		Vector3 currentVelocity = LinearVelocity;
@@ -50,6 +56,23 @@ public partial class Player : RigidBody3D
 
 		// Apply the new velocity, preserving any vertical velocity
 		LinearVelocity = new Vector3(newHorizontalVelocity.X, currentVelocity.Y, newHorizontalVelocity.Z);
+	}
+
+	private void HandleRotation(Vector3 inputDir, float delta)
+	{
+		if (inputDir.LengthSquared() == 0)
+		{
+			return;
+		}
+
+		// Calculate target angle from input direction (negated to face movement direction)
+		float targetAngle = Mathf.Atan2(-inputDir.X, -inputDir.Z);
+
+		// Smoothly interpolate current rotation toward target
+		float currentAngle = Rotation.Y;
+		float newAngle = Mathf.LerpAngle(currentAngle, targetAngle, RotationSpeed * delta);
+
+		Rotation = new Vector3(Rotation.X, newAngle, Rotation.Z);
 	}
 
 	private Vector3 GetInputDirection()
