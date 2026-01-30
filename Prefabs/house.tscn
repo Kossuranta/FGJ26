@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://pffiojx1kpdp"]
 
+[ext_resource type="Script" uid="uid://cio31avlxqtlg" path="res://Scripts/House.cs" id="1_house"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cel1d"]
 albedo_color = Color(0, 0.69070953, 0.2617817, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jcjmw"]
 
-[node name="House" type="Node3D" unique_id=958063721]
+[node name="House" type="Node3D" unique_id=958063721 node_paths=PackedStringArray("Spawnpoint")]
+script = ExtResource("1_house")
+Spawnpoint = NodePath("Spawnpoint")
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1304518926]
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, -0.5, 0)
@@ -31,3 +35,11 @@ mesh = SubResource("BoxMesh_jcjmw")
 transform = Transform3D(19, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 1, -9.75)
 material_override = SubResource("StandardMaterial3D_cel1d")
 mesh = SubResource("BoxMesh_jcjmw")
+
+[node name="Spawnpoint" type="Marker3D" parent="." unique_id=136597774]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1399840079]
+transform = Transform3D(1, 0, 0, 0, 0.46928665, 0.88304585, 0, -0.88304585, 0.46928665, 0, 12.073212, 9.412972)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1174654640]
+transform = Transform3D(1, 0, 0, 0, 0.4203708, 0.9073524, 0, -0.9073524, 0.4203708, 0, 10, 0)

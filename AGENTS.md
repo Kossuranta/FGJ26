@@ -31,7 +31,13 @@ Before starting any work, read the [PLAN.md](./PLAN.md) file to understand the g
 - Use `[Export]` attribute for exposing variables to the editor
 - Inherit from appropriate Godot node types (`Node`, `Node2D`, `Node3D`, `CharacterBody2D`, etc.)
 - Use signals for decoupled communication between nodes
-- Prefer `GetNode<T>()` with proper null checks
+- **Never search for nodes or scripts by name** - Names can change and break code. Instead, use `[Export]` references set in the editor. Create wrapper scripts with exported node references when you need to access child nodes from external scripts.
+
+### No Hardcoding
+
+- **Never hardcode asset/file references** - Use `[Export]` and tell the developer to set references in the editor
+- **Never hardcode configurable values** - Expose tunable values (speeds, timers, thresholds, etc.) via `[Export]` so they can be adjusted in the editor without code changes
+- Example: Instead of `private float speed = 5.0f;` use `[Export] public float Speed { get; set; } = 5.0f;`
 
 ## Agent Behavior
 
