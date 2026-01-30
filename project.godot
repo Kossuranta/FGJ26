@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Nukkumaski"
-run/main_scene="uid://34dw64u8oi7e"
+run/main_scene="uid://d216gtchmfk6y"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
