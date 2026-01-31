@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://3cf3pesmxqwp"]
+
+[ext_resource type="Texture2D" uid="uid://76u15yh6ghgc" path="res://Assets/Textures/DefaultMaterial_Base_colorAwake.png" id="1_kwv5h"]
+
+[resource]
+diffuse_mode = 1
+albedo_texture = ExtResource("1_kwv5h")

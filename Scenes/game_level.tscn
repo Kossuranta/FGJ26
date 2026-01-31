@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ca1ascsjaevew"]
 
 [ext_resource type="Script" uid="uid://da4ki7jufc5xq" path="res://Scripts/GameManager.cs" id="1_jcjmw"]
-[ext_resource type="PackedScene" path="res://Prefabs/house.tscn" id="2_ht4rx"]
-[ext_resource type="PackedScene" path="res://Prefabs/player.tscn" id="3_u7uub"]
+[ext_resource type="PackedScene" uid="uid://pffiojx1kpdp" path="res://Prefabs/house.tscn" id="2_ht4rx"]
+[ext_resource type="PackedScene" uid="uid://dwayruujhu53i" path="res://Prefabs/player.tscn" id="3_u7uub"]
 
 [node name="GameLevel" type="Node3D" unique_id=1811580237]
 script = ExtResource("1_jcjmw")
