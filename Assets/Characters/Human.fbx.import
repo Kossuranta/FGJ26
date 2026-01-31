@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cxgvhkeg1cagb"
+uid="uid://d2k1bbyt7wv27"
 path="res://.godot/imported/Human.fbx-fc2a0f0562d974e82fceb5a20e0715ae.scn"
 
 [deps]
@@ -39,9 +39,8 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"Material.001": {
+"@MATERIAL:0": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Assets/Materials/HumanMaterial.tres",
 "use_external/path": "uid://3cf3pesmxqwp"
 }
 }
