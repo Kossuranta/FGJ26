@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://bgmj07fiv2rkl"]
+[gd_scene format=3 uid="uid://bu1knilu01d6n"]
 
-[ext_resource type="ArrayMesh" uid="uid://chvu05wegtcdl" path="res://Assets/Environment/Suihku.res" id="1_ap0tu"]
+[ext_resource type="ArrayMesh" uid="uid://jll114xljbl7" path="res://Assets/Environment/Suihku.res" id="1_ap0tu"]
 [ext_resource type="Texture2D" uid="uid://ccrhfu57hpy5o" path="res://Assets/Textures/VessaTavara.png" id="2_j0ml5"]
+[ext_resource type="SpriteFrames" uid="uid://cwpucss3vqs1f" path="res://Assets/Animations/FX_WaterLeak.tres" id="3_j0ml5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4x5a"]
 albedo_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
@@ -13,3 +14,8 @@ albedo_texture = ExtResource("2_j0ml5")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.4979082, 0)
 mesh = ExtResource("1_ap0tu")
 surface_material_override/0 = SubResource("StandardMaterial3D_n4x5a")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1151633483]
+transform = Transform3D(0.13, 0, 0, 0, 0.11733706, 0.055964377, 0, -0.055964377, 0.11733706, -0.94536346, 0.6294613, 0.5484011)
+sprite_frames = ExtResource("3_j0ml5")
+autoplay = "default"
