@@ -173,4 +173,10 @@ public partial class GameManager : Node
 
 		ScoreUI?.UpdateScore(Score);
 	}
+
+	public void OnGameEnd()
+	{
+		GD.Print($"Game Over! Final Score: {Score:F0}");
+		// TODO: Show game over screen, return to main menu, etc.
+	}
 }
