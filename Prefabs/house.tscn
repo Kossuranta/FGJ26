@@ -1,47 +1,44 @@
 [gd_scene format=3 uid="uid://pffiojx1kpdp"]
 
 [ext_resource type="Script" uid="uid://cio31avlxqtlg" path="res://Scripts/House.cs" id="1_house"]
+[ext_resource type="PackedScene" uid="uid://c8aq2fn453ec2" path="res://Prefabs/wall_1.tscn" id="2_6pk7p"]
+[ext_resource type="PackedScene" uid="uid://ckdhe3yq0e0mv" path="res://Prefabs/camera_3d.tscn" id="2_65ldg"]
+[ext_resource type="PackedScene" uid="uid://1ftg6cuk2asy" path="res://Prefabs/directional_light_3d.tscn" id="3_gjult"]
+[ext_resource type="PackedScene" uid="uid://dgmbi0pccq0gu" path="res://Prefabs/bed.tscn" id="5_gjult"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cel1d"]
-albedo_color = Color(0, 0.69070953, 0.2617817, 1)
+albedo_color = Color(2.4065375e-07, 0.39114994, 0.16083744, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_jcjmw"]
+[sub_resource type="BoxMesh" id="BoxMesh_ahg4q"]
+size = Vector3(20, 1, 20)
 
 [node name="House" type="Node3D" unique_id=958063721 node_paths=PackedStringArray("Spawnpoint")]
 script = ExtResource("1_house")
 Spawnpoint = NodePath("Spawnpoint")
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1304518926]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_cel1d")
-mesh = SubResource("BoxMesh_jcjmw")
-
-[node name="Wall" type="MeshInstance3D" parent="." unique_id=768275737]
-transform = Transform3D(0.5, 0, 0, 0, 2, 0, 0, 0, 20, -9.75, 1, 0)
-material_override = SubResource("StandardMaterial3D_cel1d")
-mesh = SubResource("BoxMesh_jcjmw")
-
-[node name="Wall2" type="MeshInstance3D" parent="." unique_id=1183115158]
-transform = Transform3D(0.5, 0, 0, 0, 2, 0, 0, 0, 20, 9.75, 1, 0)
-material_override = SubResource("StandardMaterial3D_cel1d")
-mesh = SubResource("BoxMesh_jcjmw")
-
-[node name="Wall3" type="MeshInstance3D" parent="." unique_id=856067371]
-transform = Transform3D(19, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 1, 9.75)
-material_override = SubResource("StandardMaterial3D_cel1d")
-mesh = SubResource("BoxMesh_jcjmw")
-
-[node name="Wall4" type="MeshInstance3D" parent="." unique_id=1457203366]
-transform = Transform3D(19, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 1, -9.75)
-material_override = SubResource("StandardMaterial3D_cel1d")
-mesh = SubResource("BoxMesh_jcjmw")
+mesh = SubResource("BoxMesh_ahg4q")
 
 [node name="Spawnpoint" type="Marker3D" parent="." unique_id=136597774]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1399840079]
-transform = Transform3D(1, 0, 0, 0, 0.46928665, 0.88304585, 0, -0.88304585, 0.46928665, 0, 12.073212, 9.412972)
+[node name="Camera3D" parent="." unique_id=647038774 instance=ExtResource("2_65ldg")]
+transform = Transform3D(1, 0, 0, 0, 0.46928662, 0.8830458, 0, -0.8830458, 0.46928662, 0, 12.073212, 9.412972)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1174654640]
+[node name="DirectionalLight3D" parent="." unique_id=54087904 instance=ExtResource("3_gjult")]
 transform = Transform3D(1, 0, 0, 0, 0.4203708, 0.9073524, 0, -0.9073524, 0.4203708, 0, 10, 0)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=557805736]
+[node name="Wall1" parent="." unique_id=1253691352 instance=ExtResource("2_6pk7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 1, 0)
+
+[node name="Wall2" parent="." unique_id=554649778 instance=ExtResource("2_6pk7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 1, 0)
+
+[node name="Wall3" parent="." unique_id=558638846 instance=ExtResource("2_6pk7p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, 9.75)
+
+[node name="Wall4" parent="." unique_id=1472062335 instance=ExtResource("2_6pk7p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, -9.75)
+
+[node name="Bed" parent="." unique_id=898245071 instance=ExtResource("5_gjult")]
