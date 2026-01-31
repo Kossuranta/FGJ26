@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cdm0paw5yvi5k"]
+
+[ext_resource type="Texture2D" uid="uid://dex43pfqf5tet" path="res://Assets/Textures/KelloJaTable_BaseColor.png" id="1_qfffb"]
+[ext_resource type="ArrayMesh" uid="uid://bghhmdoxgu222" path="res://Assets/Environment/Kello_Table.res" id="1_wmr2d"]
+[ext_resource type="ArrayMesh" uid="uid://bmvlxkjfj4dud" path="res://Assets/Environment/Kello_001.res" id="2_qfffb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7exv"]
+albedo_texture = ExtResource("1_qfffb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ft66k"]
+albedo_texture = ExtResource("1_qfffb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s7exv"]
+size = Vector3(0.5, 0.75, 0.62353516)
+
+[node name="Clock" type="StaticBody3D" unique_id=15099231]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1189983793]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.57443905, 0)
+
+[node name="MeshTable" type="MeshInstance3D" parent="Node3D" unique_id=1537204244]
+material_override = SubResource("StandardMaterial3D_s7exv")
+mesh = ExtResource("1_wmr2d")
+
+[node name="MeshClock" type="MeshInstance3D" parent="Node3D" unique_id=1487444092]
+material_override = SubResource("StandardMaterial3D_ft66k")
+mesh = ExtResource("2_qfffb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1776810327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0.0021972656)
+shape = SubResource("BoxShape3D_s7exv")
