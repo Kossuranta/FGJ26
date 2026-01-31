@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://rx2b7p2yquky"]
+
+[ext_resource type="ArrayMesh" uid="uid://is28l5okhdqr" path="res://Assets/Environment/Vessa_001.res" id="1_42qdu"]
+[ext_resource type="Texture2D" uid="uid://ccrhfu57hpy5o" path="res://Assets/Textures/VessaTavara.png" id="2_manwj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4x5a"]
+albedo_color = Color(0.57700837, 0.5770084, 0.57700837, 1)
+albedo_texture = ExtResource("2_manwj")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_todqe"]
+size = Vector3(0.6762867, 0.8411865, 0.4158268)
+
+[node name="Sink" type="StaticBody3D" unique_id=1920436334]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1677661318]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_42qdu")
+surface_material_override/0 = SubResource("StandardMaterial3D_n4x5a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=360841779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054110527, 0.42156982, 3.1471252e-05)
+shape = SubResource("BoxShape3D_todqe")

@@ -2,14 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://h2pmfpbcmham" path="res://Assets/Textures/DefaultMaterial_Base_color_Sleep.png" id="1_1jku7"]
 [ext_resource type="Script" uid="uid://cqfpx0ndblp00" path="res://Scripts/Bed.cs" id="1_o36uu"]
+[ext_resource type="Material" path="res://Assets/Materials/BedMaterial.tres" id="2_405ds"]
+[ext_resource type="ArrayMesh" uid="uid://vhhafrhxmta2" path="res://Assets/Environment/Bed.res" id="2_c87oj"]
 [ext_resource type="ArrayMesh" uid="uid://dbak7ukx88jm" path="res://Assets/Characters/Human.res" id="2_qi3l6"]
 [ext_resource type="Script" uid="uid://bqsbhbvgmrjqx" path="res://Scripts/BedArea.cs" id="3_qi3l6"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_qt68a"]
-size = Vector3(2, 0.5, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wnw1"]
-size = Vector3(2, 0.5, 1)
+size = Vector3(2.5303955, 1.1729736, 2.1009521)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o36uu"]
 albedo_texture = ExtResource("1_1jku7")
@@ -22,15 +21,16 @@ script = ExtResource("1_o36uu")
 Area = NodePath("Area3D")
 
 [node name="BedMesh" type="MeshInstance3D" parent="." unique_id=1222097331]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_qt68a")
+transform = Transform3D(-1, -8.742278e-08, -3.821371e-15, 0, -4.371139e-08, 1, -8.742278e-08, 1, 4.371139e-08, 0, 0, 0)
+material_override = ExtResource("2_405ds")
+mesh = ExtResource("2_c87oj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1027774837]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015808105, 0.5977173, -0.0071411133)
 shape = SubResource("BoxShape3D_4wnw1")
 
 [node name="HumanMesh" type="MeshInstance3D" parent="." unique_id=387164184]
-transform = Transform3D(-1.3027009e-15, 4.371139e-08, -1, 1, 2.9802322e-08, 0, 2.9802322e-08, -1, -4.371139e-08, 1, 0.75, 0)
+transform = Transform3D(0.09280504, 4.6288548e-08, -0.9956843, 0.9956843, 2.5617068e-08, 0.09280504, 2.9802322e-08, -1, -4.371139e-08, 0.70649374, 0.76733553, -0.48183337)
 material_override = SubResource("StandardMaterial3D_o36uu")
 mesh = ExtResource("2_qi3l6")
 

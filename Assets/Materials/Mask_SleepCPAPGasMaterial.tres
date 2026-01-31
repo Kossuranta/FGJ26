@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bgfcsacqcg8nn"]
+
+[ext_resource type="Texture2D" uid="uid://btr4s3ttjgtbn" path="res://Assets/Textures/Masks_SleepCPAPGas_BaseColor.png" id="1_ridk7"]
+
+[resource]
+albedo_texture = ExtResource("1_ridk7")

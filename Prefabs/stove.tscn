@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dsytb6v8kkmbi"]
+
+[ext_resource type="ArrayMesh" uid="uid://c4hcnepp5fe53" path="res://Assets/Environment/Stove_001.res" id="1_qlxa1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_todqe"]
+size = Vector3(0.9009094, 0.8411865, 0.81192017)
+
+[node name="Stove" type="StaticBody3D" unique_id=1920436334]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1677661318]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_qlxa1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=360841779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004714966, 0.42156982, 0.03565979)
+shape = SubResource("BoxShape3D_todqe")

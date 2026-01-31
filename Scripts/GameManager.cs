@@ -17,6 +17,9 @@ public partial class GameManager : Node
 	[Export] public float SleepDrainRate { get; set; } = 15f;
 	[Export] public float ScorePerSecond { get; set; } = 100f;
 
+	[Export] public float NightDurationSeconds { get; set; } = 300f;
+	[Export] public float NightProgress { get; set; } = 0f;
+
 	public MaskType CurrentEvent { get; private set; } = MaskType.None;
 	public float Score { get; private set; }
 
@@ -26,6 +29,7 @@ public partial class GameManager : Node
 	private MinigameBase _activeMinigame;
 	private List<PackedScene> _shuffledMinigames;
 	private int _minigameIndex;
+	private bool _gameEnded;
 
 	public override void _Ready()
 	{
@@ -117,8 +121,30 @@ public partial class GameManager : Node
 
 	public override void _Process(double delta)
 	{
+		if (_gameEnded)
+		{
+			return;
+		}
+
+		UpdateNightProgress((float)delta);
 		UpdateSleep((float)delta);
 		UpdateScore((float)delta);
+	}
+
+	private void UpdateNightProgress(float delta)
+	{
+		if (NightDurationSeconds <= 0.0f)
+		{
+			return;
+		}
+
+		NightProgress = Mathf.Clamp(NightProgress + (delta / NightDurationSeconds), 0.0f, 1.0f);
+
+		if (NightProgress >= 1.0f)
+		{
+			_gameEnded = true;
+			OnGameEnd();
+		}
 	}
 
 	public void SetEvent(MaskType requiredMask)

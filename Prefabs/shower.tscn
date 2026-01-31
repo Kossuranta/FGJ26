@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bgmj07fiv2rkl"]
+
+[ext_resource type="ArrayMesh" uid="uid://chvu05wegtcdl" path="res://Assets/Environment/Suihku.res" id="1_ap0tu"]
+[ext_resource type="Texture2D" uid="uid://ccrhfu57hpy5o" path="res://Assets/Textures/VessaTavara.png" id="2_j0ml5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4x5a"]
+albedo_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+albedo_texture = ExtResource("2_j0ml5")
+
+[node name="Shower" type="Node3D" unique_id=1407426939]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1677661318]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.4979082, 0)
+mesh = ExtResource("1_ap0tu")
+surface_material_override/0 = SubResource("StandardMaterial3D_n4x5a")

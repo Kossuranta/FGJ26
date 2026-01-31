@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://x0exh0vp6e8s"]
+
+[ext_resource type="ArrayMesh" uid="uid://dxm0gd3pfkqj1" path="res://Assets/Environment/VessanMatto.res" id="1_2gxxq"]
+[ext_resource type="Texture2D" uid="uid://ccrhfu57hpy5o" path="res://Assets/Textures/VessaTavara.png" id="2_nk2ta"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4x5a"]
+albedo_color = Color(0.48235294, 0.48235294, 0.48235294, 1)
+albedo_texture = ExtResource("2_nk2ta")
+
+[node name="BathroomCarpet" type="Node3D" unique_id=1746584567]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1677661318]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_2gxxq")
+surface_material_override/0 = SubResource("StandardMaterial3D_n4x5a")

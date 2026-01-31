@@ -20,6 +20,7 @@ PickupUIElement = NodePath("UiPickUp")
 SetMaskUIElement = NodePath("UiPlaceMask")
 SleepBarUI = NodePath("UiSleepBar")
 ScoreUI = NodePath("UiScore")
+NightDurationSeconds = 120.0
 
 [node name="UiPickUp" parent="." unique_id=1815324665 instance=ExtResource("4_u7uub")]
 
