@@ -13,7 +13,7 @@ albedo_texture = ExtResource("1_qfffb")
 albedo_texture = ExtResource("1_qfffb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s7exv"]
-size = Vector3(0.5, 0.75, 0.62353516)
+size = Vector3(1.0205078, 0.75, 1.2480469)
 
 [node name="ClockAndTable" type="StaticBody3D" unique_id=15099231 node_paths=PackedStringArray("TimeLabel")]
 script = ExtResource("1_ft66k")
@@ -31,7 +31,7 @@ material_override = SubResource("StandardMaterial3D_ft66k")
 mesh = ExtResource("2_qfffb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1776810327]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0.0021972656)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00048828125, 0.375, 0.0041503906)
 shape = SubResource("BoxShape3D_s7exv")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=39503027]
