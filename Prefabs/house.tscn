@@ -6,6 +6,28 @@
 [ext_resource type="PackedScene" uid="uid://1ftg6cuk2asy" path="res://Prefabs/directional_light_3d.tscn" id="3_gjult"]
 [ext_resource type="PackedScene" uid="uid://dgmbi0pccq0gu" path="res://Prefabs/bed.tscn" id="5_gjult"]
 [ext_resource type="PackedScene" uid="uid://41lkbrtcm7uk" path="res://Prefabs/Masks/sleep_mask.tscn" id="6_qt68a"]
+[ext_resource type="ArrayMesh" uid="uid://cdqfrg0vurbro" path="res://Assets/Environment/Lattia.res" id="7_qykhd"]
+[ext_resource type="ArrayMesh" uid="uid://dhnvbg0ltdl4c" path="res://Assets/Environment/Seina_2.res" id="8_fuw16"]
+[ext_resource type="ArrayMesh" uid="uid://b1y5g5758w5qo" path="res://Assets/Environment/Seina_3.res" id="9_2kdnt"]
+[ext_resource type="ArrayMesh" uid="uid://bgxqmbwiwmoxy" path="res://Assets/Environment/Seina_4.res" id="10_p3nvl"]
+[ext_resource type="ArrayMesh" uid="uid://dlectg1qtummx" path="res://Assets/Environment/Seina_5.res" id="11_wq1w0"]
+[ext_resource type="ArrayMesh" uid="uid://bqmikpwl100ek" path="res://Assets/Environment/Seina_6.res" id="12_2n45v"]
+[ext_resource type="ArrayMesh" uid="uid://bsdcyhvq5fw1j" path="res://Assets/Environment/Seina_7.res" id="13_ig3on"]
+[ext_resource type="ArrayMesh" uid="uid://blxwicy1ckw2v" path="res://Assets/Environment/Seina_8.res" id="14_3rkdl"]
+[ext_resource type="ArrayMesh" uid="uid://cxicu83gd81y1" path="res://Assets/Environment/Seina_9.res" id="15_l5ebm"]
+[ext_resource type="ArrayMesh" uid="uid://bmn5g42j73141" path="res://Assets/Environment/Seina_14.res" id="16_8gx1q"]
+[ext_resource type="ArrayMesh" uid="uid://btjca1qwc7b4" path="res://Assets/Environment/Seina_13.res" id="17_whe8c"]
+[ext_resource type="ArrayMesh" uid="uid://br2m7dml1uxu5" path="res://Assets/Environment/Seina_10.res" id="18_rjmqb"]
+[ext_resource type="ArrayMesh" uid="uid://rekjmiyxgumr" path="res://Assets/Environment/Seina_12.res" id="19_c7e21"]
+[ext_resource type="ArrayMesh" uid="uid://crwujfp4c7ikw" path="res://Assets/Environment/Seina_11.res" id="20_ds202"]
+[ext_resource type="ArrayMesh" uid="uid://drho6rkulbgll" path="res://Assets/Environment/Sein_1.res" id="21_ltwog"]
+[ext_resource type="ArrayMesh" uid="uid://bp50fl60ukld7" path="res://Assets/Environment/Ulkoseina_O_1.res" id="22_edb4e"]
+[ext_resource type="ArrayMesh" uid="uid://beqfn8ua0shll" path="res://Assets/Environment/Ulkoseina_O_2.res" id="23_uyknc"]
+[ext_resource type="ArrayMesh" uid="uid://blivbjrv3j6gu" path="res://Assets/Environment/Ulkoseina_O_3.res" id="24_kfflr"]
+[ext_resource type="ArrayMesh" uid="uid://bhhrdsb2s7dly" path="res://Assets/Environment/Ulkoseina_V3.res" id="25_asj5i"]
+[ext_resource type="ArrayMesh" uid="uid://cjbr7lgqfw8ql" path="res://Assets/Environment/Ulkoseina_V_2.res" id="26_tnjg6"]
+[ext_resource type="ArrayMesh" uid="uid://cl4ajp4i2q5os" path="res://Assets/Environment/Ulkoseina_V_1.res" id="27_q2hw7"]
+[ext_resource type="ArrayMesh" uid="uid://dlx68pqisxv23" path="res://Assets/Environment/Ulkoseinä_Taka.res" id="28_2gbxu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cel1d"]
 albedo_color = Color(2.4065375e-07, 0.39114994, 0.16083744, 1)
@@ -19,7 +41,7 @@ Spawnpoint = NodePath("Spawnpoint")
 Bed = NodePath("Bed")
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1304518926]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030343533, -9.447269, 0.03565073)
 material_override = SubResource("StandardMaterial3D_cel1d")
 mesh = SubResource("BoxMesh_ahg4q")
 
@@ -32,19 +54,107 @@ transform = Transform3D(1, 0, 0, 0, 0.7111187, 0.7030721, 0, -0.7030721, 0.71111
 transform = Transform3D(1, 0, 0, 0, 0.4203708, 0.9073524, 0, -0.9073524, 0.4203708, 0, 10, 0)
 
 [node name="Wall1" parent="." unique_id=1253691352 instance=ExtResource("2_6pk7p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, -11.920214, 0)
 
 [node name="Wall2" parent="." unique_id=554649778 instance=ExtResource("2_6pk7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 1, 0)
 
 [node name="Wall3" parent="." unique_id=558638846 instance=ExtResource("2_6pk7p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, 9.75)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -7.684125, 9.75)
 
 [node name="Wall4" parent="." unique_id=1472062335 instance=ExtResource("2_6pk7p")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, -9.75)
 
 [node name="Bed" parent="." unique_id=898245071 instance=ExtResource("5_gjult")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7.667753)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.1360435, 0, -4.941268)
 
 [node name="SleepMask" parent="." unique_id=1955854983 instance=ExtResource("6_qt68a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.25, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.9469583, 1.8572018)
+
+[node name="Lattia" type="MeshInstance3D" parent="." unique_id=2000702381]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.4557892, 0, -2.0444498)
+mesh = ExtResource("7_qykhd")
+
+[node name="Seina2" type="MeshInstance3D" parent="." unique_id=1423573939]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.7312303, 0.57064134, 1.3428031)
+mesh = ExtResource("8_fuw16")
+
+[node name="Seina3" type="MeshInstance3D" parent="." unique_id=1578787096]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.3926816, 0.5724369, -0.35934973)
+mesh = ExtResource("9_2kdnt")
+
+[node name="Seina4" type="MeshInstance3D" parent="." unique_id=1339631318]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.709595, 0.57119, -0.36816955)
+mesh = ExtResource("10_p3nvl")
+
+[node name="Seina5" type="MeshInstance3D" parent="." unique_id=146022393]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.8697567, 0.56989515, -0.36673295)
+mesh = ExtResource("11_wq1w0")
+
+[node name="Seina6" type="MeshInstance3D" parent="." unique_id=882364603]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.07048607, 0.5634756, -0.3638351)
+mesh = ExtResource("12_2n45v")
+
+[node name="Seina7" type="MeshInstance3D" parent="." unique_id=1315019238]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.080611944, 0.57376456, -2.2293997)
+mesh = ExtResource("13_ig3on")
+
+[node name="Seina8" type="MeshInstance3D" parent="." unique_id=1452719797]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.748505, 0.57766366, -2.2127953)
+mesh = ExtResource("14_3rkdl")
+
+[node name="Seina9" type="MeshInstance3D" parent="." unique_id=1478350218]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.4111934, 0.57357454, -3.9586725)
+mesh = ExtResource("15_l5ebm")
+
+[node name="Seina14" type="MeshInstance3D" parent="." unique_id=1435495641]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.0831936, 0.5646951, -3.9386282)
+mesh = ExtResource("16_8gx1q")
+
+[node name="Seina13" type="MeshInstance3D" parent="." unique_id=1719519531]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.085580766, 0.56995654, -6.2111626)
+mesh = ExtResource("17_whe8c")
+
+[node name="Seina10" type="MeshInstance3D" parent="." unique_id=398256805]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.747959, 0.5933603, -6.213826)
+mesh = ExtResource("18_rjmqb")
+
+[node name="Seina12" type="MeshInstance3D" parent="." unique_id=545002721]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.753419, 0.6027441, -3.9381168)
+mesh = ExtResource("19_c7e21")
+
+[node name="Seina11" type="MeshInstance3D" parent="." unique_id=1625399825]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.7320814, 0.5739007, -0.34533548)
+mesh = ExtResource("20_ds202")
+
+[node name="Sein1" type="MeshInstance3D" parent="." unique_id=1814475660]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.0454826, 0.5648913, 1.3484049)
+mesh = ExtResource("21_ltwog")
+
+[node name="UlkoseinaO1" type="MeshInstance3D" parent="." unique_id=954071310]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.753976, 0.64315057, 1.4368378)
+mesh = ExtResource("22_edb4e")
+
+[node name="UlkoseinaO2" type="MeshInstance3D" parent="." unique_id=2106767662]
+transform = Transform3D(0.9999228, -0.011223703, 0.005327919, -0.00531286, 0.0013710668, 0.9999851, -0.0112308385, -0.9999361, 0.0013113298, 5.784971, 0.6376109, -2.166944)
+mesh = ExtResource("23_uyknc")
+
+[node name="UlkoseinaO3" type="MeshInstance3D" parent="." unique_id=1092669756]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.757084, 0.6451192, -6.1675763)
+mesh = ExtResource("24_kfflr")
+
+[node name="UlkoseinaV3" type="MeshInstance3D" parent="." unique_id=1222371213]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -6.7436757, 0.5580207, 3.0328617)
+mesh = ExtResource("25_asj5i")
+
+[node name="UlkoseinaV2" type="MeshInstance3D" parent="." unique_id=1185214176]
+transform = Transform3D(0.99998176, -7.918932e-10, -0.006038802, 0.006038802, 1.3113177e-07, 0.99998176, 0, -1, 1.3113416e-07, -2.425096, 0.582454, 2.9808629)
+mesh = ExtResource("26_tnjg6")
+
+[node name="UlkoseinaV1" type="MeshInstance3D" parent="." unique_id=1407866782]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.0502315, 0.6120968, 3.0463223)
+mesh = ExtResource("27_q2hw7")
+
+[node name="UlkoseinäTaka" type="MeshInstance3D" parent="." unique_id=897058379]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -10.427793, 0.57558835, -8.095583)
+mesh = ExtResource("28_2gbxu")
