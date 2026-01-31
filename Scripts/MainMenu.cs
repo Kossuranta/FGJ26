@@ -1,22 +1,28 @@
 using Godot;
-using System;
 
 public partial class MainMenu : Control
 {
-	private Button _startButton;
-	private Button _quitButton;
+	[Export] public Button StartButton { get; set; }
+	[Export] public Button QuitButton { get; set; }
 
 	public override void _Ready()
 	{
-		_startButton = GetNode<Button>("CenterContainer/VBoxContainer/StartButton");
-		_quitButton  = GetNode<Button>("CenterContainer/VBoxContainer/QuitButton");
-		_startButton.Pressed += OnStartPressed;
-		_quitButton.Pressed  += OnQuitPressed;
+		if (StartButton == null)
+		{
+			GD.PrintErr("MainMenu: StartButton is not assigned!");
+		}
+
+		if (QuitButton == null)
+		{
+			GD.PrintErr("MainMenu: QuitButton is not assigned!");
+		}
+
+		StartButton.Pressed += OnStartPressed;
+		QuitButton.Pressed += OnQuitPressed;
 	}
 
 	private void OnStartPressed()
 	{
-		// TODO: change to your actual gameplay scene path
 		GetTree().ChangeSceneToFile("res://Scenes/game_level.tscn");
 	}
 
