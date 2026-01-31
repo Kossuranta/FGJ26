@@ -35,6 +35,9 @@ public partial class GameManager : Node
 	private int _minigameIndex;
 	private bool _gameEnded;
 
+	private Mask _pendingMask;
+	private BedArea _pendingBedArea;
+
 	public override void _Ready()
 	{
 		Instance = this;
@@ -208,6 +211,17 @@ public partial class GameManager : Node
 		return _bedArea.CurrentMask == CurrentEvent;
 	}
 
+	public void OnMaskApplied(MaskType maskType)
+	{
+		// If the correct mask was applied for the current event, stop the looping SFX immediately.
+			if (maskType == CurrentEvent && CurrentEvent == MaskType.Cpap)
+		{
+			var audio = global::PlayerAudio.Instance;
+			audio?.StopLoopingAudio();
+			GD.Print($"Correct mask applied ({maskType}), stopped looping audio");
+		}
+	}
+
 	public void StartNextMinigame()
 	{
 		if (_minigameIndex >= _shuffledMinigames.Count)
@@ -234,6 +248,32 @@ public partial class GameManager : Node
 	public void ClearActiveMinigame()
 	{
 		_activeMinigame = null;
+		ApplyPendingMask();
+	}
+
+	public void SetPendingMask(Mask mask, BedArea bedArea)
+	{
+		_pendingMask = mask;
+		_pendingBedArea = bedArea;
+		// Mask stays visible on player until minigame completes
+	}
+
+	private void ApplyPendingMask()
+	{
+		if (_pendingMask == null || _pendingBedArea == null)
+		{
+			return;
+		}
+
+		// Clear the mask from player first
+		if (_player != null)
+		{
+			_player.DropMask();
+		}
+
+		_pendingBedArea.SetMask(_pendingMask);
+		_pendingMask = null;
+		_pendingBedArea = null;
 	}
 
 	public bool OverrideInput()
@@ -275,7 +315,6 @@ public partial class GameManager : Node
 
 	public void EndGame(bool won)
 	{
-		return;
 		if (_gameEnded)
 		{
 			return;

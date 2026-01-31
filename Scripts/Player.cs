@@ -97,10 +97,9 @@ public partial class Player : RigidBody3D
 
 		if (Input.IsActionJustPressed("interact") && _nearbyBedArea != null && IsCarryingMask)
 		{
-			Mask mask = CarriedMask;
-			DropMask();
-			_nearbyBedArea.SetMask(mask);
-			
+			// Store pending mask - will be applied after minigame completes
+			// Mask stays on player until minigame finishes
+			_gameManager.SetPendingMask(CarriedMask, _nearbyBedArea);
 			_gameManager.StartNextMinigame();
 		}
 	}

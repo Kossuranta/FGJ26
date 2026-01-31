@@ -63,9 +63,11 @@ public partial class BedArea : Area3D
 		MaskPosition.AddChild(mask);
 		mask.Position = Vector3.Zero;
 		mask.Rotation = Vector3.Zero;
+		mask.Visible = true;
 
 		CurrentMask = mask.Type;
 		GameManager.Instance?.ShowSetMaskUI(false);
+		GameManager.Instance?.OnMaskApplied(mask.Type);
 		GD.Print($"Set {mask.Type} mask on bed");
 	}
 
