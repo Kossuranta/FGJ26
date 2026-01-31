@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://dsytb6v8kkmbi"]
+[gd_scene format=3 uid="uid://crkeebg1ufpeq"]
 
 [ext_resource type="ArrayMesh" uid="uid://c4hcnepp5fe53" path="res://Assets/Environment/Stove_001.res" id="1_qlxa1"]
+[ext_resource type="SpriteFrames" uid="uid://jqq0323td5pv" path="res://Assets/Animations/FX_HeatRadiation.tres" id="2_i81m4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_todqe"]
 size = Vector3(0.9009094, 0.8411865, 0.81192017)
@@ -14,3 +15,8 @@ mesh = ExtResource("1_qlxa1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=360841779]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004714966, 0.42156982, 0.03565979)
 shape = SubResource("BoxShape3D_todqe")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=577052591]
+transform = Transform3D(0.2, 0, 0, 0, 0.18052307, -0.08608962, 0, 0.08608962, 0.18052307, 0, 1.2632096, -0.457793)
+sprite_frames = ExtResource("2_i81m4")
+autoplay = "default"
