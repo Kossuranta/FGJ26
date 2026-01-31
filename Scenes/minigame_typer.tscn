@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ccn1h26gfyokk" path="res://Scripts/MinigameTyper.cs" id="1_dk1af"]
 [ext_resource type="Theme" uid="uid://dhdi1ka7qfrlc" path="res://Themes/ui_font_theme.tres" id="2_dk1af"]
+[ext_resource type="Texture2D" uid="uid://d086nxg163dne" path="res://Assets/UI/UI_MinigameBG_01.png" id="3_5svl1"]
+[ext_resource type="FontFile" uid="uid://cpwhbheucfmak" path="res://Assets/Fonts/ComicNeue-Bold.ttf" id="3_gb4ny"]
 
 [node name="MinigameTyper" type="Control" unique_id=483290457 node_paths=PackedStringArray("WordLabel", "TypedLabel")]
 layout_mode = 3
@@ -30,13 +32,24 @@ alignment = 1
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=535078248]
 layout_mode = 2
 theme = ExtResource("2_dk1af")
+theme_override_colors/font_outline_color = Color(0.23397452, 0.19377285, 0.45799989, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_gb4ny")
 text = "Type following word:"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=691051950]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme = ExtResource("2_dk1af")
+theme_override_colors/font_outline_color = Color(0.23397452, 0.19377285, 0.45799989, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_gb4ny")
 
 [node name="LabelWord" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=282411150]
 layout_mode = 2
 theme = ExtResource("2_dk1af")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+theme_override_colors/font_outline_color = Color(0.30276093, 0.27859604, 0.5327601, 1)
+theme_override_constants/outline_size = 5
 text = "unimaski"
 horizontal_alignment = 1
 uppercase = true
@@ -48,7 +61,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0.80784315, 0, 1)
+theme_override_colors/font_color = Color(0.89411765, 0.8392157, 0.49411765, 1)
 text = "unim    "
 horizontal_alignment = 1
 uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/LabelWord" unique_id=151585591]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -128.0
+offset_top = -51.0
+offset_right = 384.0
+offset_bottom = 77.0
+texture = ExtResource("3_5svl1")
+expand_mode = 1
