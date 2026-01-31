@@ -85,7 +85,7 @@ expand_mode = 1
 custom_minimum_size = Vector2(256, 128)
 layout_mode = 2
 
-[node name="Start text" type="Label" parent="HBoxContainer/VBoxContainer/StartButtonParent" unique_id=488236100]
+[node name="StartText" type="Label" parent="HBoxContainer/VBoxContainer/StartButtonParent" unique_id=488236100]
 layout_mode = 0
 offset_left = 55.0
 offset_top = 70.0
@@ -96,7 +96,7 @@ theme_override_fonts/font = ExtResource("4_8um5k")
 theme_override_font_sizes/font_size = 54
 text = "Start"
 
-[node name="UI_CloudBG_Title" type="TextureRect" parent="HBoxContainer/VBoxContainer/StartButtonParent/Start text" unique_id=892200211]
+[node name="UI_CloudBG_Title" type="TextureRect" parent="HBoxContainer/VBoxContainer/StartButtonParent/StartText" unique_id=892200211]
 show_behind_parent = true
 layout_mode = 0
 offset_left = -60.0
@@ -124,7 +124,7 @@ text = "Start"
 custom_minimum_size = Vector2(256, 128)
 layout_mode = 2
 
-[node name="Start text" type="Label" parent="HBoxContainer/VBoxContainer/QuitButtonParent" unique_id=391946718]
+[node name="QuitText" type="Label" parent="HBoxContainer/VBoxContainer/QuitButtonParent" unique_id=391946718]
 layout_mode = 0
 offset_left = 359.0
 offset_top = 12.0
@@ -135,7 +135,7 @@ theme_override_fonts/font = ExtResource("4_8um5k")
 theme_override_font_sizes/font_size = 54
 text = "Quit"
 
-[node name="UI_CloudBG_Title" type="TextureRect" parent="HBoxContainer/VBoxContainer/QuitButtonParent/Start text" unique_id=418616870]
+[node name="UI_CloudBG_Title" type="TextureRect" parent="HBoxContainer/VBoxContainer/QuitButtonParent/QuitText" unique_id=418616870]
 show_behind_parent = true
 layout_mode = 0
 offset_left = -90.0
