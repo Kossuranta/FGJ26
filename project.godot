@@ -15,6 +15,10 @@ run/main_scene="uid://d216gtchmfk6y"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Audio="*uid://7vceitt5n47y"
+
 [dotnet]
 
 project/assembly_name="Nukkumaski"

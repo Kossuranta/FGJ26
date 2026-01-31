@@ -114,8 +114,9 @@ theme = SubResource("Theme_853f1")
 theme_override_colors/font_color = Color(0.17072427, 0.16985181, 0.22814149, 1)
 theme_override_fonts/font = ExtResource("3_3qf0w")
 theme_override_font_sizes/font_size = 32
-text = "Your human woke up. 
-Too much noise, too much chaos!
+text = "Too much noise, too much chaos,
+Your human woke up!
+
 Better luck next night."
 horizontal_alignment = 1
 

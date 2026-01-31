@@ -20,6 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uvfiw")
 Slider = NodePath("HSlider")
+StartValue = 100.0
 
 [node name="HSlider" type="HSlider" parent="." unique_id=2016136631]
 layout_mode = 1

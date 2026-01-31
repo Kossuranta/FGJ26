@@ -15,7 +15,6 @@ public partial class GameManager : Node
 	[Export] public Control SetMaskUIElement { get; set; }
 	[Export] public UiSleepBar SleepBarUI { get; set; }
 	[Export] public UiScore ScoreUI { get; set; }
-	[Export] public PlayerAudio PlayerAudio { get; set; }
 	[Export] public EventAudioData[] EventAudioDataList { get; set; }
 
 	[Export] public float SleepFillRate { get; set; } = 10f;
@@ -162,9 +161,10 @@ public partial class GameManager : Node
 		GD.Print($"Event started: requires {requiredMask} mask");
 
 		EventAudioData audioData = GetEventAudioData(requiredMask);
-		if (audioData != null && PlayerAudio != null)
+		var audio = global::PlayerAudio.Instance;
+		if (audioData != null && audio != null)
 		{
-			PlayerAudio.PlayEventAudio(audioData);
+			audio.PlayEventAudio(audioData);
 		}
 	}
 
@@ -191,9 +191,10 @@ public partial class GameManager : Node
 		CurrentEvent = MaskType.None;
 		GD.Print("Event cleared");
 
-		if (PlayerAudio != null)
+		var audio = global::PlayerAudio.Instance;
+		if (audio != null)
 		{
-			PlayerAudio.StopLoopingAudio();
+			audio.StopLoopingAudio();
 		}
 	}
 
@@ -283,6 +284,10 @@ public partial class GameManager : Node
 		LastGameWon = won;
 		LastFinalScore = (int)Score;
 		GD.Print($"Game Over! Won={won}, Final Score: {LastFinalScore}");
+
+		// Make sure any looping event SFX doesn't carry over into menus / game over.
+		var audio = global::PlayerAudio.Instance;
+		audio?.StopLoopingAudio();
 
 		if (GameOverScene == null)
 		{

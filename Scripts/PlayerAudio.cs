@@ -2,6 +2,8 @@ using Godot;
 
 public partial class PlayerAudio : Node
 {
+	public static PlayerAudio Instance { get; private set; }
+
 	[Export] public AudioStreamPlayer[] MusicPlayers { get; set; }
 	[Export] public AudioStreamPlayer SFXPlayer { get; set; }
 	[Export] public AudioStreamPlayer SFXPlayerLoop { get; set; }
@@ -16,7 +18,21 @@ public partial class PlayerAudio : Node
 
 	public override void _Ready()
 	{
+		if (Instance != null && Instance != this)
+		{
+			GD.PrintErr("PlayerAudio: Multiple instances detected. Music persistence may behave unexpectedly.");
+		}
+
+		Instance = this;
 		ValidateExports();
+	}
+
+	public override void _ExitTree()
+	{
+		if (Instance == this)
+		{
+			Instance = null;
+		}
 	}
 
 	private void ValidateExports()
@@ -24,21 +40,42 @@ public partial class PlayerAudio : Node
 		if (MusicPlayers == null || MusicPlayers.Length < 3)
 		{
 			GD.PrintErr("PlayerAudio: MusicPlayers array must have at least 3 AudioStreamPlayers!");
-			return;
 		}
 
-		for (int i = 0; i < MusicPlayers.Length; i++)
+		if (MusicPlayers != null)
 		{
-			if (MusicPlayers[i] == null)
+			for (int i = 0; i < MusicPlayers.Length; i++)
 			{
-				GD.PrintErr($"PlayerAudio: MusicPlayers[{i}] is not assigned!");
+				if (MusicPlayers[i] == null)
+				{
+					GD.PrintErr($"PlayerAudio: MusicPlayers[{i}] is not assigned!");
+				}
 			}
+		}
+
+		if (SFXPlayer == null)
+		{
+			GD.PrintErr("PlayerAudio: SFXPlayer is not assigned!");
+		}
+
+		if (SFXPlayerLoop == null)
+		{
+			GD.PrintErr("PlayerAudio: SFXPlayerLoop is not assigned!");
 		}
 	}
 
 	public override void _Process(double delta)
 	{
-		UpdateActivePlayerIndex();
+		// If we're not in gameplay (menus/game over), force the default music layer (index 0).
+		if (GameManager.Instance == null || GameManager.Instance.SleepBarUI == null)
+		{
+			_activePlayerIndex = 0;
+		}
+		else
+		{
+			UpdateActivePlayerIndex();
+		}
+
 		UpdateVolumes((float)delta);
 	}
 
