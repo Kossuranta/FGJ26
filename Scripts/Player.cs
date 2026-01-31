@@ -90,9 +90,7 @@ public partial class Player : RigidBody3D
 			// Bed interaction takes priority when carrying a mask
 			if (_nearbyBedArea != null && IsCarryingMask)
 			{
-				// Store pending mask - will be applied after minigame completes
-				// Mask stays on player until minigame finishes
-				_gameManager.SetPendingMask(CarriedMask, _nearbyBedArea);
+				// Start minigame - mask will be applied when minigame completes
 				_gameManager.StartNextMinigame();
 			}
 			else if (_nearbyMask != null)
