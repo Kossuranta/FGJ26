@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b1aob6gs6un0j"]
+
+[ext_resource type="Script" uid="uid://cne3x38odd3s4" path="res://Scripts/MinigameSpammer.cs" id="1_f57bn"]
+[ext_resource type="Texture2D" uid="uid://34yw01dd1k2o" path="res://Assets/Textures/BarQ.png" id="2_6igo4"]
+[ext_resource type="Texture2D" uid="uid://cyjukquf05l0u" path="res://Assets/Textures/BarBackground.png" id="3_trhb4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cl8fa"]
+texture = ExtResource("2_6igo4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oh8kn"]
+texture = ExtResource("3_trhb4")
+
+[node name="MinigameSpammer" type="Node2D" unique_id=790891921 node_paths=PackedStringArray("UiObject")]
+position = Vector2(1, 0)
+script = ExtResource("1_f57bn")
+UiObject = NodePath("ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=392928146]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 13.0
+offset_right = 316.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxTexture_cl8fa")
+theme_override_styles/fill = SubResource("StyleBoxTexture_oh8kn")
+max_value = 1.0
+value = 0.5

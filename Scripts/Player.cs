@@ -14,9 +14,12 @@ public partial class Player : RigidBody3D
 
 	private Mask _nearbyMask;
 	private BedArea _nearbyBedArea;
+	private GameManager _gameManager;
 
 	public override void _Ready()
 	{
+		_gameManager = GameManager.Instance;
+
 		if (MaskCarryPosition == null)
 		{
 			GD.PrintErr("Player: MaskCarryPosition is not assigned! Please assign it in the editor.");
@@ -81,6 +84,11 @@ public partial class Player : RigidBody3D
 
 	public override void _Process(double delta)
 	{
+		if (_gameManager.OverrideInput())
+		{
+			return;
+		}
+		
 		if (Input.IsActionJustPressed("interact") && _nearbyMask != null && !IsCarryingMask)
 		{
 			PickupMask(_nearbyMask);
@@ -92,6 +100,8 @@ public partial class Player : RigidBody3D
 			Mask mask = CarriedMask;
 			DropMask();
 			_nearbyBedArea.SetMask(mask);
+			
+			_gameManager.StartSpammerMinigame();
 		}
 	}
 
@@ -138,8 +148,13 @@ public partial class Player : RigidBody3D
 
 	private Vector3 GetInputDirection()
 	{
-		Vector3 direction = Vector3.Zero;
+		if (_gameManager.OverrideInput())
+		{
+			return Vector3.Zero;
+		}
 
+		Vector3 direction = Vector3.Zero;
+		
 		if (Input.IsActionPressed("move_forward"))
 		{
 			direction.Z -= 1;

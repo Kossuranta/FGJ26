@@ -6,6 +6,7 @@ public partial class GameManager : Node
 
 	[Export] public PackedScene HouseScene { get; set; }
 	[Export] public PackedScene PlayerScene { get; set; }
+	[Export] public PackedScene spammerScene { get; set; }
 	[Export] public Control PickupUIElement { get; set; }
 	[Export] public Control SetMaskUIElement { get; set; }
 	[Export] public UiSleepBar SleepBarUI { get; set; }
@@ -21,6 +22,7 @@ public partial class GameManager : Node
 	private House _house;
 	private Player _player;
 	private BedArea _bedArea;
+	private MinigameBase _activeMinigame;
 
 	public override void _Ready()
 	{
@@ -140,6 +142,40 @@ public partial class GameManager : Node
 		}
 
 		return _bedArea.CurrentMask == CurrentEvent;
+	}
+
+	public void StartSpammerMinigame()
+	{
+		if (spammerScene == null)
+		{
+			GD.PrintErr("GameManager: spammerScene is not set! Please assign it in the editor.");
+			return;
+		}
+
+		MinigameSpammer minigame = spammerScene.Instantiate<MinigameSpammer>();
+		AddChild(minigame);
+		SetActiveMinigame(minigame);
+	}
+
+	public void SetActiveMinigame(MinigameBase minigame)
+	{
+		_activeMinigame = minigame;
+	}
+
+	public void ClearActiveMinigame()
+	{
+		_activeMinigame = null;
+	}
+
+	public bool OverrideInput()
+	{
+		if (_activeMinigame != null)
+		{
+			_activeMinigame.HandleInput();
+			return true;
+		}
+			
+		return false;
 	}
 
 	private void UpdateSleep(float delta)
