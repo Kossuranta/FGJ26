@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c7lh18soj862c"]
+
+[ext_resource type="Texture2D" uid="uid://bls37gddc7hx1" path="res://Assets/Textures/DefaultMaterial_Base_color_Elf.png" id="1_wivki"]
+
+[resource]
+albedo_texture = ExtResource("1_wivki")
