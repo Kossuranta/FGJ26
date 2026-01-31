@@ -6,9 +6,17 @@ public partial class Mask : Node3D
 	[Export] public Area3D PickupArea { get; set; }
 
 	private Player _playerInZone;
+	private Node _spawnParent;
+	private Vector3 _spawnPosition;
+	private Vector3 _spawnRotation;
 
 	public override void _Ready()
 	{
+		// Record original spawn location
+		_spawnParent = GetParent();
+		_spawnPosition = Position;
+		_spawnRotation = Rotation;
+
 		if (PickupArea == null)
 		{
 			GD.PrintErr("Mask: PickupArea is not assigned! Please assign it in the editor.");
@@ -60,5 +68,29 @@ public partial class Mask : Node3D
 			PickupArea.SetDeferred("monitoring", false);
 			PickupArea.SetDeferred("monitorable", false);
 		}
+	}
+
+	public void ReturnToSpawn()
+	{
+		if (_spawnParent == null)
+		{
+			GD.PrintErr($"Mask ({Type}): No spawn parent recorded, cannot return to spawn.");
+			return;
+		}
+
+		GetParent()?.RemoveChild(this);
+		_spawnParent.AddChild(this);
+		Position = _spawnPosition;
+		Rotation = _spawnRotation;
+		Visible = true;
+
+		// Re-enable pickup area so player can pick it up again
+		if (PickupArea != null)
+		{
+			PickupArea.SetDeferred("monitoring", true);
+			PickupArea.SetDeferred("monitorable", true);
+		}
+
+		GD.Print($"Mask ({Type}): Returned to spawn position");
 	}
 }

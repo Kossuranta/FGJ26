@@ -193,12 +193,11 @@ public partial class GameManager : Node
 	{
 		CurrentEvent = MaskType.None;
 		GD.Print("Event cleared");
+	}
 
-		var audio = global::PlayerAudio.Instance;
-		if (audio != null)
-		{
-			audio.StopLoopingAudio();
-		}
+	public void ClearBedMask()
+	{
+		_bedArea?.ClearMask();
 	}
 
 	public bool HasCorrectMask()

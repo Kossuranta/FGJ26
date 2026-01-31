@@ -121,6 +121,6 @@ public partial class EventSystem : Node
 
 	private void ReturnEquippedMaskToSpawn()
 	{
-		// TODO: Implement returning the equipped mask to its original spawn position
+		GameManager.Instance?.ClearBedMask();
 	}
 }

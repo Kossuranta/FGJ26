@@ -7,6 +7,7 @@ public partial class BedArea : Area3D
 	public MaskType CurrentMask { get; private set; } = MaskType.None;
 
 	private Player _playerInZone;
+	private Mask _currentMaskObject;
 
 	public override void _Ready()
 	{
@@ -59,12 +60,19 @@ public partial class BedArea : Area3D
 			return;
 		}
 
+		// If there's already a mask on the bed, return it to its spawn position
+		if (_currentMaskObject != null)
+		{
+			_currentMaskObject.ReturnToSpawn();
+		}
+
 		mask.GetParent()?.RemoveChild(mask);
 		MaskPosition.AddChild(mask);
 		mask.Position = Vector3.Zero;
 		mask.Rotation = Vector3.Zero;
 		mask.Visible = true;
 
+		_currentMaskObject = mask;
 		CurrentMask = mask.Type;
 		GameManager.Instance?.ShowSetMaskUI(false);
 		GameManager.Instance?.OnMaskApplied(mask.Type);
@@ -73,6 +81,13 @@ public partial class BedArea : Area3D
 
 	public void ClearMask()
 	{
+		// Return current mask to spawn if there is one
+		if (_currentMaskObject != null)
+		{
+			_currentMaskObject.ReturnToSpawn();
+			_currentMaskObject = null;
+		}
+
 		CurrentMask = MaskType.None;
 	}
 }
