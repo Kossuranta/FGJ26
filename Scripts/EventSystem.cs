@@ -41,16 +41,7 @@ public partial class EventSystem : Node
 
 	private void CreateShuffledEventQueue()
 	{
-		MaskType[] shuffled = new MaskType[_availableEvents.Length];
-		Array.Copy(_availableEvents, shuffled, _availableEvents.Length);
-		
-		// Fisher-Yates shuffle
-		for (int i = shuffled.Length - 1; i > 0; i--)
-		{
-			int j = _random.Next(i + 1);
-			(shuffled[i], shuffled[j]) = (shuffled[j], shuffled[i]);
-		}
-		
+		var shuffled = ShuffleHelper.ToShuffledList(_availableEvents);
 		_eventQueue = new Queue<MaskType>(shuffled);
 	}
 

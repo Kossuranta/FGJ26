@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class GameManager : Node
 {
@@ -6,7 +7,7 @@ public partial class GameManager : Node
 
 	[Export] public PackedScene HouseScene { get; set; }
 	[Export] public PackedScene PlayerScene { get; set; }
-	[Export] public PackedScene spammerScene { get; set; }
+	[Export] public PackedScene[] MinigameScenes { get; set; }
 	[Export] public Control PickupUIElement { get; set; }
 	[Export] public Control SetMaskUIElement { get; set; }
 	[Export] public UiSleepBar SleepBarUI { get; set; }
@@ -23,31 +24,63 @@ public partial class GameManager : Node
 	private Player _player;
 	private BedArea _bedArea;
 	private MinigameBase _activeMinigame;
+	private List<PackedScene> _shuffledMinigames;
+	private int _minigameIndex;
 
 	public override void _Ready()
 	{
 		Instance = this;
+		ValidateExports();
 		ShowPickupUI(false);
 		ShowSetMaskUI(false);
 		SpawnHouse();
 		SpawnPlayer();
-		DebugReferences();
+		ShuffleMinigames();
 	}
 
-	private void DebugReferences()
+	private void ValidateExports()
 	{
+		if (HouseScene == null)
+		{
+			GD.PrintErr("GameManager: HouseScene is not assigned!");
+		}
+
+		if (PlayerScene == null)
+		{
+			GD.PrintErr("GameManager: PlayerScene is not assigned!");
+		}
+
+		if (MinigameScenes == null || MinigameScenes.Length == 0)
+		{
+			GD.PrintErr("GameManager: MinigameScenes is not assigned!");
+		}
+
+		if (PickupUIElement == null)
+		{
+			GD.PrintErr("GameManager: PickupUIElement is not assigned!");
+		}
+
+		if (SetMaskUIElement == null)
+		{
+			GD.PrintErr("GameManager: SetMaskUIElement is not assigned!");
+		}
+
 		if (SleepBarUI == null)
 		{
 			GD.PrintErr("GameManager: SleepBarUI is not assigned!");
 		}
-		else if (SleepBarUI.Slider == null)
+
+		if (ScoreUI == null)
 		{
-			GD.PrintErr("GameManager: SleepBarUI.Slider is not assigned!");
+			GD.PrintErr("GameManager: ScoreUI is not assigned!");
 		}
-		else
-		{
-			GD.Print($"GameManager: SleepBarUI OK - Value: {SleepBarUI.GetValue()}");
-		}
+	}
+
+	private void ShuffleMinigames()
+	{
+		_minigameIndex = 0;
+		_shuffledMinigames = ShuffleHelper.ToShuffledList(MinigameScenes);
+		GD.Print($"GameManager: Shuffled {_shuffledMinigames.Count} minigames");
 	}
 
 	public override void _ExitTree()
@@ -60,32 +93,16 @@ public partial class GameManager : Node
 
 	public void ShowPickupUI(bool show)
 	{
-		if (PickupUIElement == null)
-		{
-			return;
-		}
-
 		PickupUIElement.Visible = show;
 	}
 
 	public void ShowSetMaskUI(bool show)
 	{
-		if (SetMaskUIElement == null)
-		{
-			return;
-		}
-
 		SetMaskUIElement.Visible = show;
 	}
 
 	private void SpawnHouse()
 	{
-		if (HouseScene == null)
-		{
-			GD.PrintErr("GameManager: HouseScene is not set! Please assign it in the editor.");
-			return;
-		}
-
 		_house = HouseScene.Instantiate<House>();
 		AddChild(_house);
 		_bedArea = _house.Bed?.Area;
@@ -93,24 +110,6 @@ public partial class GameManager : Node
 
 	private void SpawnPlayer()
 	{
-		if (PlayerScene == null)
-		{
-			GD.PrintErr("GameManager: PlayerScene is not set! Please assign it in the editor.");
-			return;
-		}
-
-		if (_house == null)
-		{
-			GD.PrintErr("GameManager: Cannot spawn player - house was not spawned!");
-			return;
-		}
-
-		if (_house.Spawnpoint == null)
-		{
-			GD.PrintErr("GameManager: Spawnpoint not set on House! Please assign it in the editor.");
-			return;
-		}
-
 		_player = PlayerScene.Instantiate<Player>();
 		AddChild(_player);
 		_player.GlobalPosition = _house.Spawnpoint.GlobalPosition;
@@ -144,17 +143,22 @@ public partial class GameManager : Node
 		return _bedArea.CurrentMask == CurrentEvent;
 	}
 
-	public void StartSpammerMinigame()
+	public void StartNextMinigame()
 	{
-		if (spammerScene == null)
+		if (_minigameIndex >= _shuffledMinigames.Count)
 		{
-			GD.PrintErr("GameManager: spammerScene is not set! Please assign it in the editor.");
-			return;
+			ShuffleMinigames();
 		}
 
-		MinigameSpammer minigame = spammerScene.Instantiate<MinigameSpammer>();
+		PackedScene scene = _shuffledMinigames[_minigameIndex];
+		_minigameIndex++;
+
+		MinigameBase minigame = scene.Instantiate<MinigameBase>();
 		AddChild(minigame);
 		SetActiveMinigame(minigame);
+		minigame.StartMinigame();
+
+		GD.Print($"GameManager: Started minigame {_minigameIndex}/{_shuffledMinigames.Count}");
 	}
 
 	public void SetActiveMinigame(MinigameBase minigame)
@@ -180,11 +184,6 @@ public partial class GameManager : Node
 
 	private void UpdateSleep(float delta)
 	{
-		if (SleepBarUI == null)
-		{
-			return;
-		}
-
 		bool shouldFill = CurrentEvent == MaskType.None || HasCorrectMask();
 
 		if (shouldFill)
@@ -199,15 +198,9 @@ public partial class GameManager : Node
 
 	private void UpdateScore(float delta)
 	{
-		if (SleepBarUI == null)
-		{
-			return;
-		}
-
 		float sleepPercent = SleepBarUI.GetNormalizedValue();
 		Score += ScorePerSecond * sleepPercent * delta;
-
-		ScoreUI?.UpdateScore(Score);
+		ScoreUI.UpdateScore(Score);
 	}
 
 	public void OnGameEnd()

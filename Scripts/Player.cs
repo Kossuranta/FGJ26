@@ -101,7 +101,7 @@ public partial class Player : RigidBody3D
 			DropMask();
 			_nearbyBedArea.SetMask(mask);
 			
-			_gameManager.StartSpammerMinigame();
+			_gameManager.StartNextMinigame();
 		}
 	}
 
