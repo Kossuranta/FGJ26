@@ -17,7 +17,11 @@ public partial class MinigameBase : Control
 	/// </summary>
 	public virtual void StopMinigame()
 	{
+		SetProcess(false);
+		SetPhysicsProcess(false);
+		SetProcessInput(false);
 		GameManager.Instance.ClearActiveMinigame();
+		QueueFree();
 	}
 
 	/// <summary>
