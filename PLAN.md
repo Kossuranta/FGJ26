@@ -14,6 +14,11 @@ The game takes place in a smart home controlled by an AI. The AI causes various 
 
 Keep the house owner asleep as long as possible by applying the correct masks to counter various events caused by the malfunctioning smart home AI.
 
+### Win / Fail States
+
+- The game ends when the house owner wakes up (**fail state**).
+- The game ends when the night ends (**win state**).
+
 ### Player Character
 
 - House elf that can move around the house
@@ -24,13 +29,13 @@ Keep the house owner asleep as long as possible by applying the correct masks to
 
 - Progress bar showing how deeply the person is sleeping
 - During events, the meter starts to drain
-- If it empties completely, the person wakes up
+- If it empties completely, the person wakes up (game ends)
 
 ### Scoring System
 
 - Player earns points constantly while the person is asleep
 - Deeper sleep = faster point accumulation
-- If the person wakes up, no points are earned for a short period until they fall asleep again
+- If the person wakes up, the game ends and scoring stops
 
 ## Events and Masks
 

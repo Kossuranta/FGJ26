@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://da4ki7jufc5xq" path="res://Scripts/GameManager.cs" id="1_jcjmw"]
 [ext_resource type="PackedScene" uid="uid://pffiojx1kpdp" path="res://Prefabs/house.tscn" id="2_ht4rx"]
 [ext_resource type="PackedScene" uid="uid://dwayruujhu53i" path="res://Prefabs/player.tscn" id="3_u7uub"]
-[ext_resource type="PackedScene" uid="uid://b1aob6gs6un0j" path="res://Scenes/minigame_spammer.tscn" id="4_g3g87"]
 [ext_resource type="PackedScene" uid="uid://ulnwd5m7wivq" path="res://UI/ui_pick_up.tscn" id="4_u7uub"]
 [ext_resource type="PackedScene" uid="uid://bit4xtq1g0rxw" path="res://UI/ui_sleep_bar.tscn" id="5_6mi8o"]
 [ext_resource type="PackedScene" uid="uid://dga0cp0ivh4pw" path="res://Scenes/minigame_typer.tscn" id="5_e38tf"]
+[ext_resource type="PackedScene" uid="uid://dc8wwp062kayr" path="res://Scenes/game_end.tscn" id="6_4ilpx"]
 [ext_resource type="Resource" uid="uid://c6816pakdnmjg" path="res://Audio/Data/event_sfx_cooling.tres" id="6_bftu2"]
 [ext_resource type="PackedScene" uid="uid://cdplpx4r222di" path="res://UI/ui_place_mask.tscn" id="6_mql7d"]
+[ext_resource type="PackedScene" uid="uid://b1aob6gs6un0j" path="res://Scenes/minigame_spammer.tscn" id="6_t3xx2"]
 [ext_resource type="PackedScene" uid="uid://dkoylyty766ik" path="res://UI/ui_score.tscn" id="7_5x8s8"]
 [ext_resource type="Resource" uid="uid://cpggbb1qg24ac" path="res://Audio/Data/event_sfx_cpap.tres" id="7_t3xx2"]
 [ext_resource type="Resource" uid="uid://c7jfohtb8005s" path="res://Audio/Data/event_sfx_fake_eyes.tres" id="8_4ilpx"]
@@ -27,7 +28,8 @@
 script = ExtResource("1_jcjmw")
 HouseScene = ExtResource("2_ht4rx")
 PlayerScene = ExtResource("3_u7uub")
-MinigameScenes = Array[PackedScene]([ExtResource("4_g3g87"), ExtResource("5_e38tf")])
+MinigameScenes = Array[PackedScene]([ExtResource("6_t3xx2"), ExtResource("5_e38tf")])
+GameOverScene = ExtResource("6_4ilpx")
 PickupUIElement = NodePath("UiPickUp")
 SetMaskUIElement = NodePath("UiPlaceMask")
 SleepBarUI = NodePath("UiSleepBar")

@@ -105,9 +105,13 @@ public partial class EventSystem : Node
 
 	private void OnAllEventsCompleted()
 	{
-		_gameEnded = true;
-		GD.Print("EventSystem: All events completed - Game Over!");
-		GameManager.Instance?.OnGameEnd();
+		// Events are not a win condition. When we run out, reshuffle and keep going
+		// until the GameManager ends the game (night ends or sleep hits zero).
+		GD.Print("EventSystem: All events completed - reshuffling queue");
+		CreateShuffledEventQueue();
+		_eventActive = false;
+		_currentEventType = MaskType.None;
+		_eventTimer = 0f;
 	}
 
 	private float GetRandomDuration()

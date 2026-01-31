@@ -4,10 +4,13 @@ using System.Collections.Generic;
 public partial class GameManager : Node
 {
 	public static GameManager Instance { get; private set; }
+	public static bool LastGameWon { get; private set; }
+	public static int LastFinalScore { get; private set; }
 
 	[Export] public PackedScene HouseScene { get; set; }
 	[Export] public PackedScene PlayerScene { get; set; }
 	[Export] public PackedScene[] MinigameScenes { get; set; }
+	[Export] public PackedScene GameOverScene { get; set; }
 	[Export] public Control PickupUIElement { get; set; }
 	[Export] public Control SetMaskUIElement { get; set; }
 	[Export] public UiSleepBar SleepBarUI { get; set; }
@@ -59,6 +62,11 @@ public partial class GameManager : Node
 		if (MinigameScenes == null || MinigameScenes.Length == 0)
 		{
 			GD.PrintErr("GameManager: MinigameScenes is not assigned!");
+		}
+
+		if (GameOverScene == null)
+		{
+			GD.PrintErr("GameManager: GameOverScene is not assigned!");
 		}
 
 		if (PickupUIElement == null)
@@ -144,8 +152,7 @@ public partial class GameManager : Node
 
 		if (NightProgress >= 1.0f)
 		{
-			_gameEnded = true;
-			OnGameEnd();
+			EndGame(true);
 		}
 	}
 
@@ -251,6 +258,11 @@ public partial class GameManager : Node
 		{
 			SleepBarUI.DecreaseValue(SleepDrainRate * delta);
 		}
+
+		if (SleepBarUI.GetValue() <= 0.0f)
+		{
+			EndGame(false);
+		}
 	}
 
 	private void UpdateScore(float delta)
@@ -260,9 +272,29 @@ public partial class GameManager : Node
 		ScoreUI.UpdateScore(Score);
 	}
 
+	public void EndGame(bool won)
+	{
+		if (_gameEnded)
+		{
+			return;
+		}
+
+		_gameEnded = true;
+		LastGameWon = won;
+		LastFinalScore = (int)Score;
+		GD.Print($"Game Over! Won={won}, Final Score: {LastFinalScore}");
+
+		if (GameOverScene == null)
+		{
+			GD.PrintErr("GameManager: GameOverScene is not assigned, can't switch to game over screen.");
+			return;
+		}
+
+		GetTree().ChangeSceneToPacked(GameOverScene);
+	}
+
 	public void OnGameEnd()
 	{
-		GD.Print($"Game Over! Final Score: {Score:F0}");
-		// TODO: Show game over screen, return to main menu, etc.
+		EndGame(true);
 	}
 }

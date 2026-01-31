@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dc8wwp062kayr"]
+
+[ext_resource type="Texture2D" uid="uid://bkxk2jsnbmibh" path="res://Assets/MainmenuBG.png" id="1_cmq3e"]
+[ext_resource type="Script" uid="uid://cf6vk022dbqqy" path="res://Scripts/GameOver.cs" id="1_wiu0u"]
+[ext_resource type="PackedScene" uid="uid://ci4hk3w4td1ba" path="res://UI/h_box_container_game_over.tscn" id="1_wl1fq"]
+[ext_resource type="PackedScene" uid="uid://ca1ascsjaevew" path="res://Scenes/game_level.tscn" id="2_3qf0w"]
+
+[node name="Control" type="Control" unique_id=66737688 node_paths=PackedStringArray("RestartButton", "QuitButton", "WinRoot", "LoseRoot", "ScoreLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wiu0u")
+RestartButton = NodePath("HBoxContainer_gameOver/VBoxContainer/StartButtonParent/StartButton")
+QuitButton = NodePath("HBoxContainer_gameOver/VBoxContainer/QuitButtonParent/QuitButton")
+WinRoot = NodePath("HBoxContainer_gameOver/VBoxContainer/Win")
+LoseRoot = NodePath("HBoxContainer_gameOver/VBoxContainer/Lose")
+ScoreLabel = NodePath("HBoxContainer_gameOver/VBoxContainer/Score/HBoxContainer/LabelScore")
+GameScene = ExtResource("2_3qf0w")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=655844311]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cmq3e")
+
+[node name="HBoxContainer_gameOver" parent="." unique_id=1567551722 instance=ExtResource("1_wl1fq")]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+alignment = 1
+
+[editable path="HBoxContainer_gameOver"]
