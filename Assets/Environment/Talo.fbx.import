@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://40vx4hlt7fxb"
+uid="uid://b0gx3mk8w51gi"
 path="res://.godot/imported/Talo.fbx-0e855d64877d2b86bac29e43251d6131.scn"
 
 [deps]
@@ -17,7 +17,7 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=150.0
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
@@ -46,7 +46,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Lattia.res",
-"save_to_file/path": "uid://0fe35ci8i5o3"
+"save_to_file/path": "uid://cr360cwy601ek"
 },
 "Sein_1": {
 "generate/lightmap_uv": 0,
@@ -55,7 +55,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Sein_1.res",
-"save_to_file/path": "uid://yek06oe48pcf"
+"save_to_file/path": "uid://bnlvvbbmup4j"
 },
 "Seina_10": {
 "generate/lightmap_uv": 0,
@@ -64,7 +64,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_10.res",
-"save_to_file/path": "uid://bfdm86ln0f8vv"
+"save_to_file/path": "uid://cdk475ei48ggr"
 },
 "Seina_11": {
 "generate/lightmap_uv": 0,
@@ -73,7 +73,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_11.res",
-"save_to_file/path": "uid://yh1sqqbtlq5i"
+"save_to_file/path": "uid://bcwwot8wnlxe1"
 },
 "Seina_12": {
 "generate/lightmap_uv": 0,
@@ -82,7 +82,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_12.res",
-"save_to_file/path": "uid://dyp34vxk4u1u1"
+"save_to_file/path": "uid://bh5d5lb30lssu"
 },
 "Seina_13": {
 "generate/lightmap_uv": 0,
@@ -91,7 +91,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_13.res",
-"save_to_file/path": "uid://b6wxcakgvfe6f"
+"save_to_file/path": "uid://dnrwb7ilqa27l"
 },
 "Seina_14": {
 "generate/lightmap_uv": 0,
@@ -100,7 +100,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_14.res",
-"save_to_file/path": "uid://da51vknpkf3dl"
+"save_to_file/path": "uid://d2p27of27fk51"
 },
 "Seina_2": {
 "generate/lightmap_uv": 0,
@@ -109,7 +109,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_2.res",
-"save_to_file/path": "uid://f07q4um3uckn"
+"save_to_file/path": "uid://iw2s3txbx4ov"
 },
 "Seina_3": {
 "generate/lightmap_uv": 0,
@@ -118,7 +118,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_3.res",
-"save_to_file/path": "uid://ch8no6yce2c5j"
+"save_to_file/path": "uid://tbvcme8gj1f6"
 },
 "Seina_4": {
 "generate/lightmap_uv": 0,
@@ -127,7 +127,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_4.res",
-"save_to_file/path": "uid://dxb2yjl108ov6"
+"save_to_file/path": "uid://bvxdji8vrwbvj"
 },
 "Seina_5": {
 "generate/lightmap_uv": 0,
@@ -136,7 +136,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_5.res",
-"save_to_file/path": "uid://d4fxicttknyt4"
+"save_to_file/path": "uid://dtbngt4umvb7"
 },
 "Seina_6": {
 "generate/lightmap_uv": 0,
@@ -145,7 +145,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_6.res",
-"save_to_file/path": "uid://dbrghi7ulipsu"
+"save_to_file/path": "uid://b05cjp45cyvkf"
 },
 "Seina_7": {
 "generate/lightmap_uv": 0,
@@ -154,7 +154,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_7.res",
-"save_to_file/path": "uid://b7fvwlsso2yle"
+"save_to_file/path": "uid://bqlo2vyjnxjwd"
 },
 "Seina_8": {
 "generate/lightmap_uv": 0,
@@ -163,7 +163,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_8.res",
-"save_to_file/path": "uid://11f8s5dmo3by"
+"save_to_file/path": "uid://cqkipwddausj0"
 },
 "Seina_9": {
 "generate/lightmap_uv": 0,
@@ -172,7 +172,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Seina_9.res",
-"save_to_file/path": "uid://dlubqic745bw7"
+"save_to_file/path": "uid://4ug8gxsdrem2"
 },
 "Ulkoseina_O_1": {
 "generate/lightmap_uv": 0,
@@ -181,7 +181,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Ulkoseina_O_1.res",
-"save_to_file/path": "uid://ckqbkmxl4d4a2"
+"save_to_file/path": "uid://b67s36wc7va1i"
 },
 "Ulkoseina_O_2": {
 "generate/lightmap_uv": 0,
@@ -190,7 +190,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Ulkoseina_O_2.res",
-"save_to_file/path": "uid://yk846sac5ehk"
+"save_to_file/path": "uid://casnoqee4ik0f"
 },
 "Ulkoseina_O_3": {
 "generate/lightmap_uv": 0,
@@ -199,7 +199,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Ulkoseina_O_3.res",
-"save_to_file/path": "uid://ctevm3q2b2mpv"
+"save_to_file/path": "uid://d2ascajsk4kwt"
 },
 "Ulkoseina_V3": {
 "generate/lightmap_uv": 0,
@@ -208,7 +208,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Ulkoseina_V3.res",
-"save_to_file/path": "uid://tybnshbn3g7s"
+"save_to_file/path": "uid://c3kl50hvvrkmj"
 },
 "Ulkoseina_V_1": {
 "generate/lightmap_uv": 0,
@@ -217,7 +217,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Ulkoseina_V_1.res",
-"save_to_file/path": "uid://dgn0473i0uawp"
+"save_to_file/path": "uid://m80va2k1ju78"
 },
 "Ulkoseina_V_2": {
 "generate/lightmap_uv": 0,
@@ -226,7 +226,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Ulkoseina_V_2.res",
-"save_to_file/path": "uid://fdixbyujbhl2"
+"save_to_file/path": "uid://c44ibuvt7xmg8"
 },
 "Ulkoseinä_Taka": {
 "generate/lightmap_uv": 0,
@@ -235,7 +235,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Assets/Environment/Ulkoseinä_Taka.res",
-"save_to_file/path": "uid://baef0wwrqop1n"
+"save_to_file/path": "uid://c0cqpmrllvtpd"
 }
 }
 }
