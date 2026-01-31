@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://b1aob6gs6un0j"]
 
 [ext_resource type="Script" uid="uid://cne3x38odd3s4" path="res://Scripts/MinigameSpammer.cs" id="1_f57bn"]
-[ext_resource type="Texture2D" uid="uid://34yw01dd1k2o" path="res://Assets/Textures/BarQ.png" id="2_6igo4"]
-[ext_resource type="Texture2D" uid="uid://cyjukquf05l0u" path="res://Assets/Textures/BarBackground.png" id="3_trhb4"]
+[ext_resource type="FontFile" uid="uid://cpwhbheucfmak" path="res://Assets/Fonts/ComicNeue-Bold.ttf" id="3_oh8kn"]
+[ext_resource type="Texture2D" uid="uid://cc0laowdqup7d" path="res://Assets/Textures/BarTexture01.png" id="4_n27e7"]
 [ext_resource type="Theme" uid="uid://dhdi1ka7qfrlc" path="res://Themes/ui_font_theme.tres" id="4_trhb4"]
+[ext_resource type="Texture2D" uid="uid://dkrihvyhplsma" path="res://Assets/Textures/BarTexture02.png" id="5_a6ta0"]
+[ext_resource type="Texture2D" uid="uid://bfilfj0h1wydb" path="res://Assets/UI/UI_Minigamebar_01.png" id="6_hmefx"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cl8fa"]
-texture = ExtResource("2_6igo4")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xj1ry"]
+texture = ExtResource("4_n27e7")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oh8kn"]
-texture = ExtResource("3_trhb4")
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ux87r"]
+texture = ExtResource("5_a6ta0")
 
 [node name="MinigameSpammer" type="Control" unique_id=1961733606 node_paths=PackedStringArray("UiObject")]
 layout_mode = 3
@@ -34,10 +34,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_trhb4")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.17530671, 0.15291, 0.40291527, 1)
 theme_override_constants/outline_size = 2
-theme_override_styles/background = SubResource("StyleBoxTexture_cl8fa")
-theme_override_styles/fill = SubResource("StyleBoxTexture_oh8kn")
+theme_override_fonts/font = ExtResource("3_oh8kn")
+theme_override_styles/background = SubResource("StyleBoxTexture_xj1ry")
+theme_override_styles/fill = SubResource("StyleBoxTexture_ux87r")
 max_value = 1.0
 value = 0.5
 
@@ -46,11 +47,22 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -60.0
-offset_bottom = -60.0
+offset_top = -100.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_trhb4")
+theme_override_colors/font_outline_color = Color(0.25921082, 0.24350682, 0.46336284, 1)
+theme_override_fonts/font = ExtResource("3_oh8kn")
 text = "Späm the E key"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="UIBarOverlay" type="TextureRect" parent="ProgressBar" unique_id=1861175956]
+layout_mode = 0
+offset_left = -48.0
+offset_top = -44.0
+offset_right = 400.0
+offset_bottom = 81.0
+texture = ExtResource("6_hmefx")
+expand_mode = 1
