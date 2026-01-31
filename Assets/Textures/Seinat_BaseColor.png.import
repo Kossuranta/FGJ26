@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5sulqj4kqhr2"
-path.s3tc="res://.godot/imported/Seinat_BaseColor.png-6c4597067600a4a7f2e3e59f85c75ee1.s3tc.ctex"
+path.s3tc="res://.godot/imported/Seinat_BaseColor.png-4b5e0e181a88082d4f7b9c615d0adde6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/textures/Seinat_BaseColor.png"
-dest_files=["res://.godot/imported/Seinat_BaseColor.png-6c4597067600a4a7f2e3e59f85c75ee1.s3tc.ctex"]
+source_file="res://Assets/Textures/Seinat_BaseColor.png"
+dest_files=["res://.godot/imported/Seinat_BaseColor.png-4b5e0e181a88082d4f7b9c615d0adde6.s3tc.ctex"]
 
 [params]
 
