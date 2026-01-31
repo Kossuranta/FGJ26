@@ -24,7 +24,7 @@ public partial class GameManager : Node
 	[Export] public float NightDurationSeconds { get; set; } = 300f;
 	[Export] public float NightProgress { get; set; } = 0f;
 
-	public MaskType CurrentEvent { get; private set; } = MaskType.None;
+	[Export] public MaskType CurrentEvent { get; private set; } = MaskType.None;
 	public float Score { get; private set; }
 
 	private House _house;
@@ -275,6 +275,7 @@ public partial class GameManager : Node
 
 	public void EndGame(bool won)
 	{
+		return;
 		if (_gameEnded)
 		{
 			return;

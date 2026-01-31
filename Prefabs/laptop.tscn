@@ -1,12 +1,21 @@
 [gd_scene format=3 uid="uid://cokd7yv6si236"]
 
+[ext_resource type="Script" uid="uid://b2a2nel2wdm7h" path="res://Scripts/Laptop.cs" id="1_875vv"]
 [ext_resource type="Material" path="res://Assets/Materials/TietokoneMaterial.tres" id="1_todqe"]
 [ext_resource type="ArrayMesh" uid="uid://b08yv5bv6xtks" path="res://Assets/Environment/tietokone_001.res" id="2_todqe"]
+[ext_resource type="Texture2D" uid="uid://b2scb8paf86pt" path="res://Assets/UI/2D_teamscall_01.png" id="3_1bde8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_todqe"]
 size = Vector3(0.64953613, 0.49902344, 0.6295166)
 
-[node name="Laptop" type="StaticBody3D" unique_id=1920436334]
+[node name="Laptop" type="StaticBody3D" unique_id=1920436334 node_paths=PackedStringArray("ScreenRoot", "ScreenLight", "ScreenSprite")]
+script = ExtResource("1_875vv")
+ScreenRoot = NodePath("ToggleOn")
+ScreenLight = NodePath("ToggleOn/SpotLight3D")
+ScreenSprite = NodePath("ToggleOn/Sprite3D")
+MaxEnergy = 2.0
+MinAlpha = 0.7
+FlashInterval = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1677661318]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
@@ -16,3 +25,19 @@ mesh = ExtResource("2_todqe")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=360841779]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.097717285, 0.25048828, -0.0026245117)
 shape = SubResource("BoxShape3D_todqe")
+
+[node name="ToggleOn" type="Node3D" parent="." unique_id=1793185937]
+
+[node name="Sprite3D" type="Sprite3D" parent="ToggleOn" unique_id=2103105608]
+transform = Transform3D(0.9099396, 0.4147409, 0, -0.4147409, 0.9099396, 0, 0, 0, 1, 0.34217235, 0.2599836, 0)
+pixel_size = 0.00085
+axis = 0
+texture = ExtResource("3_1bde8")
+region_enabled = true
+region_rect = Rect2(137, 9.23, 731.172, 531.468)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="ToggleOn" unique_id=100875685]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.2870201, 0.30439374, -1.2546047e-08)
+light_color = Color(0.26666668, 0.25882354, 1, 1)
+light_energy = 5.0
+spot_angle = 85.0
