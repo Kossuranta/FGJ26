@@ -3,8 +3,8 @@
 [ext_resource type="Material" path="res://Assets/Materials/TietokoneMaterial.tres" id="1_todqe"]
 [ext_resource type="ArrayMesh" uid="uid://b08yv5bv6xtks" path="res://Assets/Environment/tietokone_001.res" id="2_todqe"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1bde8"]
-size = Vector3(0.46246338, 0.31518555, 0.4230957)
+[sub_resource type="BoxShape3D" id="BoxShape3D_todqe"]
+size = Vector3(0.64953613, 0.49902344, 0.6295166)
 
 [node name="Laptop" type="StaticBody3D" unique_id=1920436334]
 
@@ -13,6 +13,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 material_override = ExtResource("1_todqe")
 mesh = ExtResource("2_todqe")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=588560011]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.067718506, 0.16430664, -0.00012207031)
-shape = SubResource("BoxShape3D_1bde8")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=360841779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.097717285, 0.25048828, -0.0026245117)
+shape = SubResource("BoxShape3D_todqe")
