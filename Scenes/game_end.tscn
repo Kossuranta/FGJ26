@@ -2,8 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://bkxk2jsnbmibh" path="res://Assets/MainmenuBG.png" id="1_cmq3e"]
 [ext_resource type="Script" uid="uid://cf6vk022dbqqy" path="res://Scripts/GameOver.cs" id="1_wiu0u"]
-[ext_resource type="PackedScene" uid="uid://ci4hk3w4td1ba" path="res://UI/h_box_container_game_over.tscn" id="1_wl1fq"]
-[ext_resource type="PackedScene" uid="uid://ca1ascsjaevew" path="res://Scenes/game_level.tscn" id="2_3qf0w"]
+[ext_resource type="FontFile" uid="uid://cpwhbheucfmak" path="res://Assets/Fonts/ComicNeue-Bold.ttf" id="3_3qf0w"]
+[ext_resource type="Texture2D" uid="uid://d086nxg163dne" path="res://Assets/UI/UI_MinigameBG_01.png" id="4_83bs5"]
+[ext_resource type="Texture2D" uid="uid://dngdx6qeic76e" path="res://Assets/UI/UI_ButtonBG_01.png" id="5_kf68x"]
+
+[sub_resource type="Theme" id="Theme_853f1"]
+default_font_size = 74
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_df05h"]
 
 [node name="Control" type="Control" unique_id=66737688 node_paths=PackedStringArray("RestartButton", "QuitButton", "WinRoot", "LoseRoot", "ScoreLabel")]
 layout_mode = 3
@@ -18,7 +24,6 @@ QuitButton = NodePath("HBoxContainer_gameOver/VBoxContainer/QuitButtonParent/Qui
 WinRoot = NodePath("HBoxContainer_gameOver/VBoxContainer/Win")
 LoseRoot = NodePath("HBoxContainer_gameOver/VBoxContainer/Lose")
 ScoreLabel = NodePath("HBoxContainer_gameOver/VBoxContainer/Score/HBoxContainer/LabelScore")
-GameScene = ExtResource("2_3qf0w")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=655844311]
 layout_mode = 1
@@ -29,17 +34,199 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_cmq3e")
 
-[node name="HBoxContainer_gameOver" parent="." unique_id=1567551722 instance=ExtResource("1_wl1fq")]
+[node name="HBoxContainer_gameOver" type="HBoxContainer" parent="." unique_id=1567551722]
 layout_mode = 1
 anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 
-[editable path="HBoxContainer_gameOver"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer_gameOver" unique_id=237994376]
+layout_mode = 2
+alignment = 1
+
+[node name="Container" type="Control" parent="HBoxContainer_gameOver/VBoxContainer" unique_id=585667953]
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer_gameOver/VBoxContainer/Container" unique_id=1314740830]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_853f1")
+theme_override_colors/font_color = Color(0.6039216, 0.6039216, 0.70980394, 1)
+theme_override_fonts/font = ExtResource("3_3qf0w")
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="UI_CloudBG_Title" type="TextureRect" parent="HBoxContainer_gameOver/VBoxContainer/Container/Label" unique_id=1357223296]
+show_behind_parent = true
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.5
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_83bs5")
+expand_mode = 1
+
+[node name="Win" type="Control" parent="HBoxContainer_gameOver/VBoxContainer" unique_id=1165985369]
+visible = false
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer_gameOver/VBoxContainer/Win" unique_id=452369467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_853f1")
+theme_override_colors/font_color = Color(0.17072427, 0.16985181, 0.22814149, 1)
+theme_override_fonts/font = ExtResource("3_3qf0w")
+theme_override_font_sizes/font_size = 32
+text = "Morning came and they’re still asleep.
+You made it through the night!"
+horizontal_alignment = 1
+
+[node name="Lose" type="Control" parent="HBoxContainer_gameOver/VBoxContainer" unique_id=1346635164]
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer_gameOver/VBoxContainer/Lose" unique_id=1192451576]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_853f1")
+theme_override_colors/font_color = Color(0.17072427, 0.16985181, 0.22814149, 1)
+theme_override_fonts/font = ExtResource("3_3qf0w")
+theme_override_font_sizes/font_size = 32
+text = "Your human woke up. 
+Too much noise, too much chaos!
+Better luck next night."
+horizontal_alignment = 1
+
+[node name="Score" type="Control" parent="HBoxContainer_gameOver/VBoxContainer" unique_id=245391481]
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer_gameOver/VBoxContainer/Score" unique_id=2024488057]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = -18.5
+offset_right = 85.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer_gameOver/VBoxContainer/Score/HBoxContainer" unique_id=1688171098]
+layout_mode = 2
+theme = SubResource("Theme_853f1")
+theme_override_colors/font_color = Color(0.17072427, 0.16985181, 0.22814149, 1)
+theme_override_fonts/font = ExtResource("3_3qf0w")
+theme_override_font_sizes/font_size = 32
+text = "Score:"
+horizontal_alignment = 1
+
+[node name="LabelScore" type="Label" parent="HBoxContainer_gameOver/VBoxContainer/Score/HBoxContainer" unique_id=457018125]
+layout_mode = 2
+theme = SubResource("Theme_853f1")
+theme_override_colors/font_color = Color(0.17072427, 0.16985181, 0.22814149, 1)
+theme_override_fonts/font = ExtResource("3_3qf0w")
+theme_override_font_sizes/font_size = 32
+text = "99999"
+horizontal_alignment = 1
+
+[node name="StartButtonParent" type="Control" parent="HBoxContainer_gameOver/VBoxContainer" unique_id=245044762]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+
+[node name="StartText" type="Label" parent="HBoxContainer_gameOver/VBoxContainer/StartButtonParent" unique_id=159311159]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 70.0
+offset_right = 168.0
+offset_bottom = 133.0
+theme_override_colors/font_color = Color(0.6039216, 0.6039216, 0.70980394, 1)
+theme_override_fonts/font = ExtResource("3_3qf0w")
+theme_override_font_sizes/font_size = 54
+text = "Restart"
+
+[node name="UI_CloudBG_Title" type="TextureRect" parent="HBoxContainer_gameOver/VBoxContainer/StartButtonParent/StartText" unique_id=1869536097]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -35.0
+offset_top = -49.0
+offset_right = 221.0
+offset_bottom = 79.0
+texture = ExtResource("5_kf68x")
+expand_mode = 1
+
+[node name="StartButton" type="Button" parent="HBoxContainer_gameOver/VBoxContainer/StartButtonParent" unique_id=778437405]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_df05h")
+layout_mode = 0
+offset_left = 4.0
+offset_top = 47.0
+offset_right = 240.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0.6039216, 0.6039216, 0.70980394, 1)
+theme_override_fonts/font = ExtResource("3_3qf0w")
+theme_override_font_sizes/font_size = 60
+text = "Restart"
+
+[node name="QuitButtonParent" type="Control" parent="HBoxContainer_gameOver/VBoxContainer" unique_id=1530153653]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+
+[node name="QuitText" type="Label" parent="HBoxContainer_gameOver/VBoxContainer/QuitButtonParent" unique_id=2122030392]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 12.0
+offset_right = 472.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0.6039216, 0.6039216, 0.70980394, 1)
+theme_override_fonts/font = ExtResource("3_3qf0w")
+theme_override_font_sizes/font_size = 54
+text = "Quit"
+
+[node name="UI_CloudBG_Title" type="TextureRect" parent="HBoxContainer_gameOver/VBoxContainer/QuitButtonParent/QuitText" unique_id=16545676]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -90.0
+offset_top = -43.0
+offset_right = 166.0
+offset_bottom = 85.0
+texture = ExtResource("5_kf68x")
+expand_mode = 1
+flip_h = true
+
+[node name="QuitButton" type="Button" parent="HBoxContainer_gameOver/VBoxContainer/QuitButtonParent" unique_id=401328880]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 304.0
+offset_top = -11.0
+offset_right = 550.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 65
+text = "Quit"
