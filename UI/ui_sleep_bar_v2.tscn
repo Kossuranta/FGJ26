@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dmccijjc2cgbt"]
+
+[ext_resource type="Script" uid="uid://cne3x38odd3s4" path="res://Scripts/MinigameSpammer.cs" id="1_62q7j"]
+[ext_resource type="Theme" uid="uid://dhdi1ka7qfrlc" path="res://Themes/ui_font_theme.tres" id="2_51d86"]
+[ext_resource type="FontFile" uid="uid://cpwhbheucfmak" path="res://Assets/Fonts/ComicNeue-Bold.ttf" id="3_ykumd"]
+[ext_resource type="Texture2D" uid="uid://cc0laowdqup7d" path="res://Assets/Textures/BarTexture01.png" id="4_eovyk"]
+[ext_resource type="Texture2D" uid="uid://dkrihvyhplsma" path="res://Assets/Textures/BarTexture02.png" id="5_8xiun"]
+[ext_resource type="Texture2D" uid="uid://c5hv655ka14xv" path="res://Assets/UI/UI_SleepMeter_01.png" id="6_fi0ty"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xj1ry"]
+texture = ExtResource("4_eovyk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ux87r"]
+texture = ExtResource("5_8xiun")
+
+[node name="UiSleepBarV2" type="Control" unique_id=1961733606 node_paths=PackedStringArray("UiObject")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+script = ExtResource("1_62q7j")
+UiObject = NodePath("UIBarOverlayParent/ProgressBar")
+
+[node name="UIBarOverlayParent" type="Control" parent="." unique_id=1927616660]
+layout_mode = 1
+anchor_left = 0.754
+anchor_top = 0.013
+anchor_right = 0.99200004
+anchor_bottom = 0.16100001
+
+[node name="ProgressBar" type="ProgressBar" parent="UIBarOverlayParent" unique_id=392928146]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.269
+anchor_top = 0.483
+anchor_right = 0.93700004
+anchor_bottom = 0.79300004
+theme = ExtResource("2_51d86")
+theme_override_colors/font_outline_color = Color(0.17530671, 0.15291, 0.40291527, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_ykumd")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/background = SubResource("StyleBoxTexture_xj1ry")
+theme_override_styles/fill = SubResource("StyleBoxTexture_ux87r")
+max_value = 1.0
+value = 0.5
+
+[node name="UIBarOverlay" type="TextureRect" parent="UIBarOverlayParent" unique_id=1861175956]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_fi0ty")
+expand_mode = 1

@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://pffiojx1kpdp" path="res://Prefabs/house.tscn" id="2_ht4rx"]
 [ext_resource type="PackedScene" uid="uid://dwayruujhu53i" path="res://Prefabs/player.tscn" id="3_u7uub"]
 [ext_resource type="PackedScene" uid="uid://ulnwd5m7wivq" path="res://UI/ui_pick_up.tscn" id="4_u7uub"]
-[ext_resource type="PackedScene" uid="uid://bit4xtq1g0rxw" path="res://UI/ui_sleep_bar.tscn" id="5_6mi8o"]
 [ext_resource type="PackedScene" uid="uid://dga0cp0ivh4pw" path="res://Scenes/minigame_typer.tscn" id="5_e38tf"]
 [ext_resource type="PackedScene" uid="uid://dc8wwp062kayr" path="res://Scenes/game_end.tscn" id="6_4ilpx"]
 [ext_resource type="PackedScene" uid="uid://nnul3ikxh0dt" path="res://Scenes/minigame_rotator.tscn" id="6_5yh0p"]
@@ -20,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://b7s7vstn2f670" path="res://Audio/Data/event_sfx_sleep.tres" id="11_aphk7"]
 [ext_resource type="Resource" uid="uid://ln3hikckqqgw" path="res://Audio/Data/event_sfx_snorkel.tres" id="12_qo105"]
 [ext_resource type="Resource" uid="uid://8bgvebv5q7xs" path="res://Audio/Data/event_sfx_welding.tres" id="13_fr8xg"]
+[ext_resource type="PackedScene" uid="uid://dmccijjc2cgbt" path="res://UI/ui_sleep_bar_v2.tscn" id="19_b78im"]
 [ext_resource type="PackedScene" uid="uid://bjs0nbjqcojdo" path="res://UI/ui_timer.tscn" id="20_faur3"]
 [ext_resource type="Script" uid="uid://c37ychysc2owj" path="res://Scripts/PauseMenu.cs" id="21_4ilpx"]
 [ext_resource type="FontFile" uid="uid://cpwhbheucfmak" path="res://Assets/Fonts/ComicNeue-Bold.ttf" id="22_b78im"]
@@ -39,7 +39,7 @@ MinigameScenes = Array[PackedScene]([ExtResource("6_t3xx2"), ExtResource("5_e38t
 GameOverScene = ExtResource("6_4ilpx")
 PickupUIElement = NodePath("UiPickUp")
 SetMaskUIElement = NodePath("UiPlaceMask")
-SleepBarUI = NodePath("UiSleepBar")
+SleepBarUI = NodePath("UiSleepBarV2")
 ScoreUI = NodePath("UiScore")
 EventAudioDataList = Array[Object]([ExtResource("6_bftu2"), ExtResource("7_t3xx2"), ExtResource("8_4ilpx"), ExtResource("9_b78im"), ExtResource("10_uakxb"), ExtResource("11_aphk7"), ExtResource("12_qo105"), ExtResource("13_fr8xg")])
 SleepDrainRate = 5.0
@@ -47,11 +47,11 @@ NightDurationSeconds = 120.0
 
 [node name="UiPickUp" parent="." unique_id=1815324665 instance=ExtResource("4_u7uub")]
 
-[node name="UiSleepBar" parent="." unique_id=617199542 instance=ExtResource("5_6mi8o")]
-
 [node name="UiPlaceMask" parent="." unique_id=364919443 instance=ExtResource("6_mql7d")]
 
 [node name="UiScore" parent="." unique_id=122718852 instance=ExtResource("7_5x8s8")]
+
+[node name="UiSleepBarV2" parent="." unique_id=1961733606 instance=ExtResource("19_b78im")]
 
 [node name="EventSystem" type="Node" parent="." unique_id=1421593516]
 script = ExtResource("8_g3g87")

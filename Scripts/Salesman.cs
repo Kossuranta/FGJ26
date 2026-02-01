@@ -9,7 +9,7 @@ public partial class Salesman : Node3D
 	[Export] public float MoveSpeed { get; set; } = 2f;
 	[Export] public float ArrivalThreshold { get; set; } = 0.1f;
 
-	private enum State { AtStart, MovingToActive, MovingToEnd }
+	private enum State { AtStart, MovingToActive, MovingToEnd, AtEnd }
 	private State _currentState = State.AtStart;
 
 	public override void _Ready()
@@ -61,6 +61,15 @@ public partial class Salesman : Node3D
 
 	private void UpdateState(bool eventActive, bool maskEquipped)
 	{
+		// Reset to start when event ends (from any state except AtStart)
+		if (!eventActive && _currentState != State.AtStart)
+		{
+			Mesh.GlobalPosition = StartPosition.GlobalPosition;
+			Mesh.GlobalRotation = StartPosition.GlobalRotation;
+			_currentState = State.AtStart;
+			return;
+		}
+
 		switch (_currentState)
 		{
 			case State.AtStart:
@@ -71,7 +80,7 @@ public partial class Salesman : Node3D
 				break;
 
 			case State.MovingToActive:
-				if (!eventActive || maskEquipped)
+				if (maskEquipped)
 				{
 					_currentState = State.MovingToEnd;
 				}
@@ -80,11 +89,12 @@ public partial class Salesman : Node3D
 			case State.MovingToEnd:
 				if (HasReachedTarget(EndPosition))
 				{
-					// Teleport back to start
-					Mesh.GlobalPosition = StartPosition.GlobalPosition;
-					Mesh.GlobalRotation = StartPosition.GlobalRotation;
-					_currentState = State.AtStart;
+					_currentState = State.AtEnd;
 				}
+				break;
+
+			case State.AtEnd:
+				// Stay at end until event ends (handled above)
 				break;
 		}
 	}
@@ -96,6 +106,7 @@ public partial class Salesman : Node3D
 			State.AtStart => StartPosition,
 			State.MovingToActive => ActivePosition,
 			State.MovingToEnd => EndPosition,
+			State.AtEnd => EndPosition,
 			_ => StartPosition
 		};
 
