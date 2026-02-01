@@ -4,12 +4,14 @@
 [ext_resource type="AudioStream" uid="uid://drsyoevcloq6v" path="res://Audio/NukkumaskiOST_Gameplay1_SAT_LAI.mp3" id="2_qa75a"]
 [ext_resource type="AudioStream" uid="uid://cm7vxocqcb6o5" path="res://Audio/NukkumaskiOST_Gameplay2_SAT_LAI.mp3" id="3_0i8pl"]
 [ext_resource type="AudioStream" uid="uid://dn0jrx8ewtvv0" path="res://Audio/NukkumaskiOST_Gameplay3_SAT_LAI.mp3" id="4_6mmrv"]
+[ext_resource type="AudioStream" uid="uid://bjbg3qi4loecq" path="res://Audio/SFX/Kavely.mp3" id="5_qa75a"]
 
-[node name="Audio" type="Node" unique_id=2071613897 node_paths=PackedStringArray("MusicPlayers", "SFXPlayer", "SFXPlayerLoop")]
+[node name="Audio" type="Node" unique_id=2071613897 node_paths=PackedStringArray("MusicPlayers", "SFXPlayer", "SFXPlayerLoop", "SfxPlayerWalkingLoop")]
 script = ExtResource("1_2dsvm")
 MusicPlayers = [NodePath("MusicPlayer1"), NodePath("MusicPlayer2"), NodePath("MusicPlayer3")]
 SFXPlayer = NodePath("SfxPlayer")
 SFXPlayerLoop = NodePath("SfxPlayerLoop")
+SfxPlayerWalkingLoop = NodePath("SfxPlayerWalkingLoop")
 
 [node name="MusicPlayer1" type="AudioStreamPlayer" parent="." unique_id=503566614]
 stream = ExtResource("2_qa75a")
@@ -28,4 +30,8 @@ autoplay = true
 [node name="SfxPlayer" type="AudioStreamPlayer" parent="." unique_id=426392274]
 
 [node name="SfxPlayerLoop" type="AudioStreamPlayer" parent="." unique_id=1265318106]
+volume_db = -9.0
+
+[node name="SfxPlayerWalkingLoop" type="AudioStreamPlayer" parent="." unique_id=2018307180]
+stream = ExtResource("5_qa75a")
 volume_db = -9.0

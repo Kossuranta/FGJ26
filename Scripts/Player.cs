@@ -106,6 +106,25 @@ public partial class Player : RigidBody3D
 		Vector3 inputDir = GetInputDirection();
 		HandleMovement(inputDir, (float)delta);
 		HandleRotation(inputDir, (float)delta);
+		UpdateWalkingSound(inputDir);
+	}
+
+	private void UpdateWalkingSound(Vector3 inputDir)
+	{
+		var audio = global::PlayerAudio.Instance;
+		if (audio == null)
+		{
+			return;
+		}
+
+		if (inputDir.LengthSquared() > 0)
+		{
+			audio.PlayWalkingLoop();
+		}
+		else
+		{
+			audio.StopWalkingLoop();
+		}
 	}
 
 	private void HandleMovement(Vector3 inputDir, float delta)
