@@ -20,6 +20,15 @@
 [ext_resource type="Resource" uid="uid://ln3hikckqqgw" path="res://Audio/Data/event_sfx_snorkel.tres" id="12_qo105"]
 [ext_resource type="Resource" uid="uid://8bgvebv5q7xs" path="res://Audio/Data/event_sfx_welding.tres" id="13_fr8xg"]
 [ext_resource type="PackedScene" uid="uid://bjs0nbjqcojdo" path="res://UI/ui_timer.tscn" id="20_faur3"]
+[ext_resource type="Script" uid="uid://c37ychysc2owj" path="res://Scripts/PauseMenu.cs" id="21_4ilpx"]
+[ext_resource type="FontFile" uid="uid://cpwhbheucfmak" path="res://Assets/Fonts/ComicNeue-Bold.ttf" id="22_b78im"]
+[ext_resource type="Texture2D" uid="uid://d086nxg163dne" path="res://Assets/UI/UI_MinigameBG_01.png" id="23_uakxb"]
+[ext_resource type="Texture2D" uid="uid://dngdx6qeic76e" path="res://Assets/UI/UI_ButtonBG_01.png" id="24_aphk7"]
+
+[sub_resource type="Theme" id="Theme_853f1"]
+default_font_size = 74
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_df05h"]
 
 [node name="GameLevel" type="Node3D" unique_id=1811580237 node_paths=PackedStringArray("PickupUIElement", "SetMaskUIElement", "SleepBarUI", "ScoreUI")]
 script = ExtResource("1_jcjmw")
@@ -47,3 +56,142 @@ NightDurationSeconds = 120.0
 script = ExtResource("8_g3g87")
 
 [node name="UiTimer" parent="." unique_id=445083505 instance=ExtResource("20_faur3")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1905380176]
+layer = 100
+
+[node name="UiPauseMenu" type="Control" parent="CanvasLayer" unique_id=544005405 node_paths=PackedStringArray("ContinueButton", "QuitButton")]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("21_4ilpx")
+ContinueButton = NodePath("HBoxContainer/VBoxContainer/StartButtonParent/StartButton")
+QuitButton = NodePath("HBoxContainer/VBoxContainer/QuitButtonParent/QuitButton")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UiPauseMenu" unique_id=1289006132]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 684.0
+offset_top = 246.0
+offset_right = 1196.0
+offset_bottom = 835.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UiPauseMenu/HBoxContainer" unique_id=1874701445]
+layout_mode = 2
+alignment = 1
+
+[node name="Container" type="Control" parent="CanvasLayer/UiPauseMenu/HBoxContainer/VBoxContainer" unique_id=1193896347]
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UiPauseMenu/HBoxContainer/VBoxContainer/Container" unique_id=1817839257]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_853f1")
+theme_override_colors/font_color = Color(0.42352942, 0.41568628, 0.5921569, 1)
+theme_override_fonts/font = ExtResource("22_b78im")
+text = "NukkuMaski"
+horizontal_alignment = 1
+
+[node name="UI_CloudBG_Title" type="TextureRect" parent="CanvasLayer/UiPauseMenu/HBoxContainer/VBoxContainer/Container/Label" unique_id=1466728433]
+show_behind_parent = true
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.5
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_uakxb")
+expand_mode = 1
+
+[node name="StartButtonParent" type="Control" parent="CanvasLayer/UiPauseMenu/HBoxContainer/VBoxContainer" unique_id=876809047]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+
+[node name="StartText" type="Label" parent="CanvasLayer/UiPauseMenu/HBoxContainer/VBoxContainer/StartButtonParent" unique_id=1853339109]
+layout_mode = 0
+offset_left = 39.495
+offset_top = 70.0
+offset_right = 243.49506
+offset_bottom = 133.0
+theme_override_colors/font_color = Color(0.42415056, 0.4149968, 0.5921563, 1)
+theme_override_fonts/font = ExtResource("22_b78im")
+theme_override_font_sizes/font_size = 54
+text = "Continue"
+
+[node name="UI_CloudBG_Title" type="TextureRect" parent="CanvasLayer/UiPauseMenu/HBoxContainer/VBoxContainer/StartButtonParent/StartText" unique_id=320197330]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -42.615
+offset_top = -46.615
+offset_right = 257.385
+offset_bottom = 81.384995
+texture = ExtResource("24_aphk7")
+expand_mode = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/UiPauseMenu/HBoxContainer/VBoxContainer/StartButtonParent" unique_id=807437673]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_df05h")
+layout_mode = 0
+offset_left = 4.0
+offset_top = 26.0
+offset_right = 291.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0.6039216, 0.6039216, 0.70980394, 1)
+theme_override_fonts/font = ExtResource("22_b78im")
+theme_override_font_sizes/font_size = 60
+text = "Start"
+
+[node name="QuitButtonParent" type="Control" parent="CanvasLayer/UiPauseMenu/HBoxContainer/VBoxContainer" unique_id=1079753957]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+
+[node name="QuitText" type="Label" parent="CanvasLayer/UiPauseMenu/HBoxContainer/VBoxContainer/QuitButtonParent" unique_id=1921394839]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 12.0
+offset_right = 472.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0.42352942, 0.41568628, 0.5921569, 1)
+theme_override_fonts/font = ExtResource("22_b78im")
+theme_override_font_sizes/font_size = 54
+text = "Quit"
+
+[node name="UI_CloudBG_Title" type="TextureRect" parent="CanvasLayer/UiPauseMenu/HBoxContainer/VBoxContainer/QuitButtonParent/QuitText" unique_id=1810263638]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -90.0
+offset_top = -43.0
+offset_right = 166.0
+offset_bottom = 85.0
+texture = ExtResource("24_aphk7")
+expand_mode = 1
+flip_h = true
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/UiPauseMenu/HBoxContainer/VBoxContainer/QuitButtonParent" unique_id=662654502]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 304.0
+offset_top = -11.0
+offset_right = 550.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 65
+text = "Quit"
