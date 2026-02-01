@@ -20,8 +20,8 @@
 [ext_resource type="Resource" uid="uid://b7s7vstn2f670" path="res://Audio/Data/event_sfx_sleep.tres" id="11_aphk7"]
 [ext_resource type="Resource" uid="uid://ln3hikckqqgw" path="res://Audio/Data/event_sfx_snorkel.tres" id="12_qo105"]
 [ext_resource type="Resource" uid="uid://8bgvebv5q7xs" path="res://Audio/Data/event_sfx_welding.tres" id="13_fr8xg"]
-[ext_resource type="PackedScene" path="res://UI/ui_timer.tscn" id="20_faur3"]
-[ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="21_4ilpx"]
+[ext_resource type="PackedScene" uid="uid://bjs0nbjqcojdo" path="res://UI/ui_timer.tscn" id="20_faur3"]
+[ext_resource type="Script" uid="uid://c37ychysc2owj" path="res://Scripts/PauseMenu.cs" id="21_4ilpx"]
 [ext_resource type="FontFile" uid="uid://cpwhbheucfmak" path="res://Assets/Fonts/ComicNeue-Bold.ttf" id="22_b78im"]
 [ext_resource type="Texture2D" uid="uid://d086nxg163dne" path="res://Assets/UI/UI_MinigameBG_01.png" id="23_uakxb"]
 [ext_resource type="Texture2D" uid="uid://dngdx6qeic76e" path="res://Assets/UI/UI_ButtonBG_01.png" id="24_aphk7"]
@@ -64,24 +64,23 @@ layer = 100
 [node name="UiPauseMenu" type="Control" parent="CanvasLayer" unique_id=544005405 node_paths=PackedStringArray("ContinueButton", "QuitButton")]
 top_level = true
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("21_4ilpx")
 ContinueButton = NodePath("HBoxContainer/VBoxContainer/StartButtonParent/StartButton")
 QuitButton = NodePath("HBoxContainer/VBoxContainer/QuitButtonParent/QuitButton")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UiPauseMenu" unique_id=1289006132]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 684.0
-offset_top = 246.0
-offset_right = 1196.0
-offset_bottom = 835.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_right = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 
