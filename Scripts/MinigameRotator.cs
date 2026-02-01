@@ -6,14 +6,13 @@ public partial class MinigameRotator : MinigameBase
 	[Export] public Control RotatingVisual { get; set; }
 
 	[Export] public float TargetValue { get; set; } = 1.0f;
-	[Export] public float MinProgressPerPress { get; set; } = 0.01f;
-	[Export] public float MaxProgressPerPress { get; set; } = 0.05f;
+	[Export] public float MinProgressPerPress { get; set; } = 0.035f;
+	[Export] public float MaxProgressPerPress { get; set; } = 0.075f;
 
 	[Export] public float RotationDurationSeconds { get; set; } = 0.12f;
 	[Export] public Tween.TransitionType RotationTransition { get; set; } = Tween.TransitionType.Sine;
 	[Export] public Tween.EaseType RotationEase { get; set; } = Tween.EaseType.Out;
 	[Export] public bool AutoCenterPivot { get; set; } = true;
-	[Export] public bool ResetRotationOnFail { get; set; } = true;
 
 	// Defaults are mapped to both WASD + arrows in this project via Input Map.
 	[Export] public string UpAction { get; set; } = "move_forward";
@@ -21,22 +20,14 @@ public partial class MinigameRotator : MinigameBase
 	[Export] public string DownAction { get; set; } = "move_back";
 	[Export] public string LeftAction { get; set; } = "move_left";
 
-	private enum Direction
-	{
-		Up = 0,
-		Right = 1,
-		Down = 2,
-		Left = 3,
-	}
+	// Direction indices: 0=Up, 1=Right, 2=Down, 3=Left
+	private const int DirectionCount = 4;
 
 	private readonly RandomNumberGenerator _rng = new();
 	private float _progress;
-	private int _expectedIndex;
-
-	private float _baseRotationRadians;
+	private int _currentIndex;
 	private int _rotationSteps;
 	private Tween _rotateTween;
-
 	private ulong _lastProcessedFrame = ulong.MaxValue;
 
 	public override void _Ready()
@@ -67,7 +58,7 @@ public partial class MinigameRotator : MinigameBase
 		base.StartMinigame();
 
 		_progress = 0.0f;
-		_expectedIndex = 0;
+		_currentIndex = 0;
 		_rotationSteps = 0;
 		Visible = true;
 
@@ -78,15 +69,7 @@ public partial class MinigameRotator : MinigameBase
 			FillBar.Value = 0.0f;
 		}
 
-		if (RotatingVisual != null)
-		{
-			_baseRotationRadians = RotatingVisual.Rotation;
-
-			if (ResetRotationOnFail)
-			{
-				RotatingVisual.Rotation = _baseRotationRadians;
-			}
-		}
+		UpdateVisualRotation(instant: true);
 	}
 
 	public override void StopMinigame()
@@ -99,9 +82,10 @@ public partial class MinigameRotator : MinigameBase
 	public override void ResetMinigame()
 	{
 		_progress = 0.0f;
-		_expectedIndex = 0;
+		_currentIndex = 0;
 		_rotationSteps = 0;
 		UpdateFillBar();
+		UpdateVisualRotation(instant: true);
 	}
 
 	public override void HandleInput()
@@ -111,8 +95,7 @@ public partial class MinigameRotator : MinigameBase
 			return;
 		}
 
-		// Player calls OverrideInput() from both _Process and _PhysicsProcess paths.
-		// This prevents double-processing the same "just pressed" input in one frame.
+		// Prevent double-processing the same input in one frame.
 		ulong frame = Engine.GetProcessFrames();
 		if (_lastProcessedFrame == frame)
 		{
@@ -120,81 +103,32 @@ public partial class MinigameRotator : MinigameBase
 		}
 		_lastProcessedFrame = frame;
 
-		if (!TryGetPressedDirection(out Direction pressed))
-		{
-			return;
-		}
-
-		Direction expected = (Direction)_expectedIndex;
-		if (pressed == expected)
+		int pressedIndex = GetPressedIndex();
+		if (pressedIndex == _currentIndex)
 		{
 			OnCorrectPress();
 		}
-		else
-		{
-			OnFail();
-		}
 	}
 
-	private bool TryGetPressedDirection(out Direction pressed)
+	private int GetPressedIndex()
 	{
-		pressed = Direction.Up;
-		int pressedCount = 0;
-
-		if (Input.IsActionJustPressed(UpAction))
-		{
-			pressed = Direction.Up;
-			pressedCount++;
-		}
-
-		if (Input.IsActionJustPressed(RightAction))
-		{
-			if (pressedCount == 0)
-			{
-				pressed = Direction.Right;
-			}
-			pressedCount++;
-		}
-
-		if (Input.IsActionJustPressed(DownAction))
-		{
-			if (pressedCount == 0)
-			{
-				pressed = Direction.Down;
-			}
-			pressedCount++;
-		}
-
-		if (Input.IsActionJustPressed(LeftAction))
-		{
-			if (pressedCount == 0)
-			{
-				pressed = Direction.Left;
-			}
-			pressedCount++;
-		}
-
-		if (pressedCount == 0)
-		{
-			return false;
-		}
-
-		if (pressedCount > 1)
-		{
-			OnFail();
-			return false;
-		}
-
-		return true;
+		if (Input.IsActionJustPressed(UpAction)) return 0;
+		if (Input.IsActionJustPressed(RightAction)) return 1;
+		if (Input.IsActionJustPressed(DownAction)) return 2;
+		if (Input.IsActionJustPressed(LeftAction)) return 3;
+		return -1;
 	}
 
 	private void OnCorrectPress()
 	{
-		_expectedIndex = (_expectedIndex + 1) % 4;
+		// Move to next index
+		_currentIndex = (_currentIndex + 1) % DirectionCount;
 		_rotationSteps++;
 
-		AnimateRotationTo(_baseRotationRadians + _rotationSteps * (Mathf.Pi / 2.0f));
+		// Update visual to show new expected direction
+		UpdateVisualRotation(instant: false);
 
+		// Add progress
 		float inc = _rng.RandfRange(MinProgressPerPress, MaxProgressPerPress);
 		_progress = Mathf.Min(_progress + inc, TargetValue);
 		UpdateFillBar();
@@ -202,19 +136,6 @@ public partial class MinigameRotator : MinigameBase
 		if (_progress >= TargetValue)
 		{
 			StopMinigame();
-		}
-	}
-
-	private void OnFail()
-	{
-		_expectedIndex = 0;
-		_progress = 0.0f;
-		UpdateFillBar();
-
-		if (ResetRotationOnFail)
-		{
-			_rotationSteps = 0;
-			AnimateRotationTo(_baseRotationRadians);
 		}
 	}
 
@@ -227,6 +148,27 @@ public partial class MinigameRotator : MinigameBase
 
 		FillBar.MaxValue = TargetValue;
 		FillBar.Value = _progress;
+	}
+
+	private void UpdateVisualRotation(bool instant)
+	{
+		if (RotatingVisual == null)
+		{
+			return;
+		}
+
+		// Use rotation steps so it always rotates forward (never backwards from 270° to 0°)
+		float targetRotation = _rotationSteps * (Mathf.Pi / 2.0f);
+
+		if (instant)
+		{
+			_rotateTween?.Kill();
+			RotatingVisual.Rotation = targetRotation;
+		}
+		else
+		{
+			AnimateRotationTo(targetRotation);
+		}
 	}
 
 	private void AnimateRotationTo(float targetRotationRadians)
@@ -253,4 +195,3 @@ public partial class MinigameRotator : MinigameBase
 		RotatingVisual.PivotOffset = RotatingVisual.Size / 2.0f;
 	}
 }
-
