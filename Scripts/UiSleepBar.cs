@@ -43,7 +43,5 @@ public partial class UiSleepBar : Control
 	private void UpdateProgressBar()
 	{
 		ProgressBar.Value = _sleepValue / 100f;
-		GD.Print("UpdateProgressBar: ", _sleepValue);
-		GD.Print("ProgressBar: ", ProgressBar.Value);
 	}
 }
