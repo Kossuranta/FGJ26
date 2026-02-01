@@ -170,7 +170,7 @@ public partial class GameManager : Node
 		}
 	}
 
-	private EventAudioData GetEventAudioData(MaskType maskType)
+	public EventAudioData GetEventAudioData(MaskType maskType)
 	{
 		if (EventAudioDataList == null)
 		{
@@ -211,24 +211,31 @@ public partial class GameManager : Node
 
 	public void OnMaskApplied(MaskType maskType)
 	{
-		// If the correct mask was applied for the current event, stop the looping SFX immediately.
-			if (maskType == CurrentEvent && CurrentEvent == MaskType.Cpap)
+		if (maskType != CurrentEvent)
 		{
-			var audio = global::PlayerAudio.Instance;
+			return;
+		}
+
+		var audio = global::PlayerAudio.Instance;
+		EventAudioData audioData = GetEventAudioData(maskType);
+
+		// Play mask equipped sound if available
+		if (audioData != null && audioData.MaskEquippedSound != null && audio != null)
+		{
+			audio.PlayOneShotSound(audioData.MaskEquippedSound);
+			GD.Print($"Correct mask applied ({maskType}), played mask equipped sound");
+		}
+
+		// Handle event-specific audio behavior
+		if (CurrentEvent == MaskType.Cpap || CurrentEvent == MaskType.Scary)
+		{
 			audio?.StopLoopingAudio();
 			GD.Print($"Correct mask applied ({maskType}), stopped looping audio");
 		}
-		if (maskType == CurrentEvent && CurrentEvent == MaskType.Scary)
+		else if (CurrentEvent == MaskType.FakeEyeGlasses)
 		{
-			var audio = global::PlayerAudio.Instance;
-			audio?.StopLoopingAudio();
-			GD.Print($"Correct mask applied ({maskType}), stopped looping audio");
-		}
-		if (maskType == CurrentEvent && CurrentEvent == MaskType.FakeEyeGlasses)
-		{
-			var audio = global::PlayerAudio.Instance;
 			audio?.PlaySecondaryLoopingAudio();
-			GD.Print($"Correct mask applied ({maskType}), Played secondary looping audio");
+			GD.Print($"Correct mask applied ({maskType}), played secondary looping audio");
 		}
 	}
 

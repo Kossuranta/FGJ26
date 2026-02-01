@@ -143,6 +143,15 @@ public partial class PlayerAudio : Node
 		}
 	}
 
+	public void PlayOneShotSound(AudioStream sound)
+	{
+		if (sound != null && SFXPlayer != null)
+		{
+			SFXPlayer.Stream = sound;
+			SFXPlayer.Play();
+		}
+	}
+
 	public void PlaySecondaryLoopingAudio()
 	{
 		if (currentEventData.LoopingSound != null && SFXPlayerLoop != null)
