@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="EventAudioData" format=3 uid="uid://c7jfohtb8005s"]
 
 [ext_resource type="AudioStream" uid="uid://bvs7suj3kcvtw" path="res://Audio/SFX/Soittoaani.wav" id="1_l4iky"]
+[ext_resource type="AudioStream" uid="uid://dtcea5ebk02ec" path="res://Audio/SFX/Puhe_1.wav" id="2_s1ikh"]
 [ext_resource type="Script" uid="uid://bx60ti282k44w" path="res://Scripts/EventAudioData.cs" id="2_wp5ug"]
 
 [resource]
 script = ExtResource("2_wp5ug")
 EventType = 4
 LoopingSound = ExtResource("1_l4iky")
+SecondaryLoopingSound = ExtResource("2_s1ikh")
 metadata/_custom_type_script = "uid://bx60ti282k44w"
