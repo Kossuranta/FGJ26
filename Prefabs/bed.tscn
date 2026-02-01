@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://h2pmfpbcmham" path="res://Assets/Textures/DefaultMaterial_Base_color_Sleep.png" id="1_1jku7"]
 [ext_resource type="Script" uid="uid://cqfpx0ndblp00" path="res://Scripts/Bed.cs" id="1_o36uu"]
-[ext_resource type="Material" uid="uid://ccludhog7dwlv" path="res://Assets/Materials/BedMaterial.tres" id="2_405ds"]
+[ext_resource type="Material" path="res://Assets/Materials/BedMaterial.tres" id="2_405ds"]
 [ext_resource type="ArrayMesh" uid="uid://vhhafrhxmta2" path="res://Assets/Environment/Bed.res" id="2_c87oj"]
 [ext_resource type="ArrayMesh" uid="uid://dbak7ukx88jm" path="res://Assets/Characters/Human.res" id="2_qi3l6"]
 [ext_resource type="Script" uid="uid://bqsbhbvgmrjqx" path="res://Scripts/BedArea.cs" id="3_qi3l6"]
@@ -18,9 +18,11 @@ albedo_texture = ExtResource("1_1jku7")
 [sub_resource type="SphereShape3D" id="SphereShape3D_1jku7"]
 radius = 1.0
 
-[node name="Bed" type="StaticBody3D" unique_id=898245071 node_paths=PackedStringArray("Area")]
+[node name="Bed" type="StaticBody3D" unique_id=898245071 node_paths=PackedStringArray("Area", "WakeUpWarning", "SleepEffect")]
 script = ExtResource("1_o36uu")
 Area = NodePath("Area3D")
+WakeUpWarning = NodePath("FX_WakeUp")
+SleepEffect = NodePath("FX_Sleep")
 
 [node name="BedMesh" type="MeshInstance3D" parent="." unique_id=1222097331]
 transform = Transform3D(-1, -8.742278e-08, -3.821371e-15, 0, -4.371139e-08, 1, -8.742278e-08, 1, 4.371139e-08, 0, 0, 0)
@@ -48,12 +50,14 @@ MaskPosition = NodePath("../HumanMesh/MaskPos")
 shape = SubResource("SphereShape3D_1jku7")
 
 [node name="FX_WakeUp" type="AnimatedSprite3D" parent="." unique_id=1450083612]
-transform = Transform3D(-0.15999797, -0.00045904855, -0.00066036195, -0.000750919, 0.13230984, 0.089964114, 0.00028796564, 0.089966066, -0.13231032, 0, 1.9749837, 0.41743708)
+transform = Transform3D(0.076417975, 0.0014672149, -0.023625001, -0.015493708, 0.06346521, -0.046174835, 0.017895209, 0.048682813, 0.060907673, -0.8565106, 1.8695238, -0.36736116)
 sprite_frames = ExtResource("7_tkiiy")
 autoplay = "default"
+frame_progress = 0.15835981
 
 [node name="FX_Sleep" type="AnimatedSprite3D" parent="." unique_id=1960785869]
-transform = Transform3D(0.14999999, 0, 0, 0, 0.12809804, -0.07804415, 0, 0.07804415, 0.12809804, 0.34627557, 1.9864993, 0)
+transform = Transform3D(0.12556605, -0.07126761, -0.04067051, 0.03385191, 0.11271634, -0.0930004, 0.07474765, 0.06867278, 0.11043927, -0.4115019, 2.1723511, 0.21131462)
 flip_h = true
 sprite_frames = ExtResource("8_p3fbb")
 autoplay = "default"
+frame_progress = 0.5213892
