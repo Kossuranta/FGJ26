@@ -25,6 +25,7 @@ grow_vertical = 2
 script = ExtResource("1_yj4r4")
 FillBar = NodePath("HBoxContainer/VBoxContainer/ProgressBar")
 RotatingVisual = NodePath("HBoxContainer/VBoxContainer/ProgressBar/Control/Pointer")
+ResetRotationOnFail = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1391481684]
 layout_mode = 1
