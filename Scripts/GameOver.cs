@@ -36,6 +36,11 @@ public partial class GameOver : Control
 		if (LoseRoot != null)
 		{
 			LoseRoot.Visible = !won;
+
+			if (!won)
+			{
+				PlayerAudio.Instance?.PlayWakeupSound();
+			}
 		}
 
 		if (ScoreLabel != null)

@@ -8,6 +8,7 @@ public partial class PlayerAudio : Node
 	[Export] public AudioStreamPlayer SFXPlayer { get; set; }
 	[Export] public AudioStreamPlayer SFXPlayerLoop { get; set; }
 	[Export] public AudioStreamPlayer SfxPlayerWalkingLoop { get; set; }
+	[Export] public AudioStreamPlayer SfxWakeup { get; set; }
 	[Export] public float VolumeTransitionSpeed { get; set; } = 1f;
 	[Export] public float MinVolumeDb { get; set; } = -80f;
 	[Export] public float MaxVolumeDb { get; set; } = 0f;
@@ -187,5 +188,10 @@ public partial class PlayerAudio : Node
 		{
 			SfxPlayerWalkingLoop.Stop();
 		}
+	}
+
+	public void PlayWakeupSound()
+	{
+		SfxWakeup?.Play();
 	}
 }
