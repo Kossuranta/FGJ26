@@ -35,7 +35,6 @@ autoplay = true
 
 [node name="SfxPlayerWakeup" type="AudioStreamPlayer" parent="." unique_id=1349022149]
 stream = ExtResource("5_0i8pl")
-volume_db = 12.0
 
 [node name="SfxPlayerLoop" type="AudioStreamPlayer" parent="." unique_id=1265318106]
 volume_db = -9.0
