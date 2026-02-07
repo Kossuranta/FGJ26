@@ -4,6 +4,7 @@ public partial class PauseMenu : Control
 {
 	[Export] public Button ContinueButton { get; set; }
 	[Export] public Button QuitButton { get; set; }
+	[Export] public Button PauseButton { get; set; }
 
 	public override void _Ready()
 	{
@@ -27,6 +28,11 @@ public partial class PauseMenu : Control
 		{
 			GD.PrintErr("PauseMenu: QuitButton is not assigned!");
 		}
+
+		if (PauseButton != null)
+		{
+			PauseButton.Pressed += TogglePause;
+		}
 	}
 
 	public override void _Process(double delta)
@@ -37,17 +43,25 @@ public partial class PauseMenu : Control
 		}
 	}
 
-	private void TogglePause()
+	public void TogglePause()
 	{
 		bool isPaused = !GetTree().Paused;
 		GetTree().Paused = isPaused;
 		Visible = isPaused;
+		if (PauseButton != null)
+		{
+			PauseButton.Visible = !isPaused;
+		}
 	}
 
 	private void OnContinuePressed()
 	{
 		GetTree().Paused = false;
 		Visible = false;
+		if (PauseButton != null)
+		{
+			PauseButton.Visible = true;
+		}
 	}
 
 	private void OnQuitPressed()

@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://d086nxg163dne" path="res://Assets/UI/UI_MinigameBG_01.png" id="23_uakxb"]
 [ext_resource type="Texture2D" uid="uid://dngdx6qeic76e" path="res://Assets/UI/UI_ButtonBG_01.png" id="24_aphk7"]
 [ext_resource type="PackedScene" uid="uid://t0sv4578xbh4" path="res://UI/ui_get_mask.tscn" id="26_uakxb"]
+[ext_resource type="Script" uid="uid://dda5gx1bgy1on" path="res://Scripts/AudioSettingsUI.cs" id="27_audio"]
 
 [sub_resource type="Theme" id="Theme_853f1"]
 default_font_size = 74
@@ -66,7 +67,7 @@ MaxEventDuration = 20.0
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1905380176]
 layer = 100
 
-[node name="UiPauseMenu" type="Control" parent="CanvasLayer" unique_id=544005405 node_paths=PackedStringArray("ContinueButton", "QuitButton")]
+[node name="UiPauseMenu" type="Control" parent="CanvasLayer" unique_id=544005405 node_paths=PackedStringArray("ContinueButton", "QuitButton", "PauseButton")]
 top_level = true
 layout_mode = 3
 anchors_preset = 15
@@ -77,6 +78,32 @@ grow_vertical = 2
 script = ExtResource("21_4ilpx")
 ContinueButton = NodePath("HBoxContainer/VBoxContainer/StartButtonParent/StartButton")
 QuitButton = NodePath("HBoxContainer/VBoxContainer/QuitButtonParent/QuitButton")
+PauseButton = NodePath("../GameHudPause/PauseButton")
+
+[node name="GameHudPause" type="Control" parent="CanvasLayer" unique_id=544005409]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -60.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 60.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="PauseButton" type="Button" parent="CanvasLayer/GameHudPause" unique_id=544005410]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("22_b78im")
+theme_override_font_sizes/font_size = 28
+text = "⏸"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UiPauseMenu" unique_id=1289006132]
 layout_mode = 1
@@ -200,3 +227,53 @@ offset_right = 550.0
 offset_bottom = 87.0
 theme_override_font_sizes/font_size = 65
 text = "Quit"
+
+[node name="AudioSettingsPanel" type="Control" parent="CanvasLayer/UiPauseMenu" unique_id=544005406]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("27_audio")
+MuteButton = NodePath("MuteButton")
+VolumeSlider = NodePath("VolumeSlider")
+
+[node name="MuteButton" type="Button" parent="CanvasLayer/UiPauseMenu/AudioSettingsPanel" unique_id=544005407]
+layout_mode = 1
+anchors_preset = 4
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_vertical = 1
+theme_override_fonts/font = ExtResource("22_b78im")
+theme_override_font_sizes/font_size = 24
+text = "Mute"
+
+[node name="VolumeSlider" type="HSlider" parent="CanvasLayer/UiPauseMenu/AudioSettingsPanel" unique_id=544005408]
+layout_mode = 1
+anchors_preset = 4
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_left = 130.0
+offset_top = -15.0
+offset_right = 300.0
+offset_bottom = 15.0
+grow_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 100.0
